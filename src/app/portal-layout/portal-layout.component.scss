@@ -1,0 +1,36 @@
+@import '../../assets/scss/abstracts/variables';
+@import '../../assets/scss/abstracts/mixins';
+
+.container {
+    max-width: 120rem;
+    margin: 8rem auto;
+    background-color: $color-grey-light-1;
+    box-shadow: $color-tertiary-dark;
+
+    min-height: 50rem;
+
+    @media (max-width: 600px) {
+        margin: 0;
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+.content {
+    display: flex;
+
+    @media (max-width: 900px) {
+        flex-direction: column;
+    }
+
+    app-portal-sidebar {
+        min-width: 250px;
+    }
+
+    app-portal-content {
+        height: 100%;
+        width: calc(100% - 250px); /* will adjust the width of sidebar */
+        float: left;
+    }
+}
+

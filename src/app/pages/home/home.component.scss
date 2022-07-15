@@ -1,0 +1,113 @@
+@import '../../../assets/scss/abstracts/variables';
+@import '../../../assets/scss/abstracts/mixins';
+
+
+////////////////////////////////////////
+// GALLERY
+.gallery {
+    display: flex;
+    height: 33rem;
+
+    .gallery__item {
+        flex: 1;
+        overflow: hidden;
+    }
+    &__photo {
+       
+        max-width: 100%;
+        display: block;
+    }
+}
+
+
+////////////////////////////////////////
+// HOTEL OVERVIEW
+.overview {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid gray;
+
+    &__heading {
+        font-size: 2.25rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 1.5rem 3rem;
+
+        @media only screen and (max-width: 600px) {
+            font-size: 1.8rem;
+            padding: 1.25rem 2rem;
+        }
+    }
+
+}
+
+.detail {
+    font-size: 1.4rem;
+    display: flex;
+    padding: 4.5rem;
+    background-color: $color-grey-light-1;
+    border-bottom: 1px solid gray;
+
+    @media only screen and (max-width: 900px) {
+        padding: 3rem;
+    }
+
+    @media only screen and (max-width: 600px) {
+        flex-direction: column;
+    }
+}
+
+.description {
+    background-color: #fff;
+    box-shadow: rgb(234, 224, 224);
+    padding: 3rem;
+    flex: 0 0 100%;
+    margin-right: 4.5rem;
+
+    @media only screen and (max-width: 900px) {
+        padding: 2rem;
+        margin-right: 3rem;
+    }
+
+    @media only screen and (max-width: 600pxl) {
+        margin-right: 0;
+        margin-bottom: 3rem;
+    }
+}
+
+
+.section-features {
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.feature-box {
+    background-color: rgb(245 245 175 / 80%);
+    font-size: 1.5rem;
+    text-align: center;
+    border-radius: 3px;
+    width: 250px;
+    box-shadow: 0 .2rem rgba(#000, 0.15);
+    transition: all 0.2s;
+
+    .category__photo {
+        font-size: 6rem;
+
+        background-image: linear-gradient(to right, #e0a12a, #896013);
+        -webkit-background-clip: text;
+        color: transparent;
+        display: inline-block;
+
+        width: 100%;
+    }
+
+    &:hover {
+        transform: translateY(-1.5rem) scale(1.03);
+    }
+}
+
+h3.heading-tertiary {
+    padding: 2rem;
+}
