@@ -183,3 +183,20 @@
         }
 
 }
+
+@media (max-width: 900px) {
+    .user-nav__user, .signout-container {
+        display: none !important;
+    }
+    .logo {
+        flex: 7;
+        text-align: center;
+    }
+
+
+}
+@media (max-width: 600px) {
+    .user-nav__notification {
+        top: 0.4rem !important  ;
+    }
+}

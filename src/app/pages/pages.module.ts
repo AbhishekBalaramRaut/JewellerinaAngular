@@ -1,21 +1,22 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
-import { PagesRoutingModule } from './pages-routing.module';
+import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { PortalContentComponent } from '../portal-layout/portal-content/portal-content.component';
+import { PortalFooterComponent } from '../portal-layout/portal-footer/portal-footer.component';
+import { PortalHeaderComponent } from '../portal-layout/portal-header/portal-header.component';
+import { PortalLayoutComponent } from '../portal-layout/portal-layout.component';
+import { PortalSidebarComponent } from '../portal-layout/portal-sidebar/portal-sidebar.component';
 import { CartComponent } from './cart/cart.component';
+import { CheckoutComponent } from './cart/checkout/checkout.component';
 import { CategoryComponent } from './category/category.component';
 import { ProductComponent } from './category/product/product.component';
-import { CheckoutComponent } from './cart/checkout/checkout.component';
-import { PortalContentComponent } from '../portal-layout/portal-content/portal-content.component';
 import { HomeComponent } from './home/home.component';
-import { PortalLayoutComponent } from '../portal-layout/portal-layout.component';
-import { PortalHeaderComponent } from '../portal-layout/portal-header/portal-header.component';
-import { PortalSidebarComponent } from '../portal-layout/portal-sidebar/portal-sidebar.component';
-import { PagesComponent } from './pages.component';
-import { ProfileComponent } from './profile/profile.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-
+import { PagesRoutingModule } from './pages-routing.module';
+import { PagesComponent } from './pages.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     PortalHeaderComponent,
     PortalSidebarComponent,
     PortalContentComponent,
+    PortalFooterComponent,
     PagesComponent,
     HomeComponent,
     ProfileComponent,
@@ -36,6 +38,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   ],
   imports: [
     CommonModule,
+    BreadcrumbModule,
     PagesRoutingModule
   ]
 })

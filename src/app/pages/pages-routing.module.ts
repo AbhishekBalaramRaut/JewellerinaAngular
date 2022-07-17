@@ -21,27 +21,82 @@ const routes: Routes = [
       },
       {
         path: 'home',
-        component: HomeComponent
+        component: HomeComponent, 
+        data: {
+          label: 'Home',
+          breadcrumb: {
+            routerLink: '/portal/home',
+            level: 1,
+            disabled: true,
+            label: 'Home',
+            styleClass: 'home'
+          }
+        }
+      },
+      {
+        path: 'home/category',
+        component: CategoryComponent,
+        data: {
+          label: 'Category',
+          breadcrumb: {
+            routerLink: '/portal/home/category',
+            level: 2,
+            disabled: true,
+            label: 'Category'
+          }
+        }
       },
       {
         path: 'order-history',
-        component: OrderHistoryComponent
+        component: OrderHistoryComponent,
+        data: {
+          label: 'Order History',
+          breadcrumb: {
+            routerLink: '/portal/order-history',
+            level: 1,
+            disabled: true,
+            label: 'Order History'
+          }
+        }
       },
       {
         path: 'profile',
-        component: ProfileComponent
-      },
-      {
-        path: 'category',
-        component: CategoryComponent
+        component: ProfileComponent,
+        data: {
+          label: 'Profile',
+          breadcrumb: {
+            routerLink: '/portal/profile',
+            level: 1,
+            disabled: true,
+            label: 'Profile'
+          }
+        }
       },
       {
         path: 'cart',
-        component: CartComponent
+        component: CartComponent,
+        data: {
+          label: 'Cart',
+          breadcrumb: {
+            routerLink: '/portal/cart',
+            level: 1,
+            disabled: true,
+            label: 'Cart'
+          }
+        }
       },
       {
         path: 'checkout',
-        component: CheckoutComponent
+        component: CheckoutComponent,
+        data: {
+          label: 'Checkout',
+          breadcrumb: {
+            routerLink: '/portal/checkout',
+            level: 1,
+            disabled: true,
+            label: 'Checkout'
+          }
+        }
       },
       {
         path: '**',

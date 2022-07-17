@@ -2,7 +2,7 @@
     <app-portal-header></app-portal-header>
 </div>
 <div class="content">
-    <app-portal-sidebar></app-portal-sidebar>
+    <app-portal-sidebar [ngClass]="{'show-sidebar': expand, 'small-screen': expand}" (expansionChanged)="expansionChanged($event)"></app-portal-sidebar>
     <app-portal-content></app-portal-content>
 </div>
-
+<app-portal-footer></app-portal-footer>

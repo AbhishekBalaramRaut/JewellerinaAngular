@@ -1,0 +1,36 @@
+@import '../../../assets/scss/abstracts/variables';
+@import '../../../assets/scss/abstracts/mixins';
+
+.detail {
+    font-size: 1.4rem;
+    display: flex;
+    padding: 4.5rem;
+    background-color: $color-grey-light-1;
+
+
+    @media only screen and (max-width: 900px) {
+        padding: 3rem;
+    }
+
+    @media only screen and (max-width: 600px) {
+        flex-direction: column;
+    }
+}
+
+.description {
+    background-color: #fff;
+    box-shadow: rgb(234, 224, 224);
+    padding: 3rem;
+    flex: 0 0 100%;
+    margin-right: 4.5rem;
+
+    @media only screen and (max-width: 900px) {
+        padding: 2rem;
+        margin-right: 3rem;
+    }
+
+    @media only screen and (max-width: 600pxl) {
+        margin-right: 0;
+        margin-bottom: 3rem;
+    }
+}

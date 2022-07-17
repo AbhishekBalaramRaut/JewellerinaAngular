@@ -6,10 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./portal-layout.component.scss']
 })
 export class PortalLayoutComponent implements OnInit {
+  expand = true;
+  
 
-  constructor() { }
+  constructor() { 
+
+     
+  }
 
   ngOnInit(): void {
+  }
+
+  expansionChanged(expand: any) {
+    this.expand = expand;
   }
 
 }

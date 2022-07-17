@@ -26,7 +26,8 @@
     display: flex;
     align-items: center;
     border-bottom: 1px solid gray;
-
+    background-color: #fff;
+    
     &__heading {
         font-size: 2.25rem;
         font-weight: 300;
@@ -47,7 +48,7 @@
     display: flex;
     padding: 4.5rem;
     background-color: $color-grey-light-1;
-    border-bottom: 1px solid gray;
+
 
     @media only screen and (max-width: 900px) {
         padding: 3rem;
@@ -81,6 +82,7 @@
     padding: 0;
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
 .feature-box {
@@ -91,6 +93,8 @@
     width: 250px;
     box-shadow: 0 .2rem rgba(#000, 0.15);
     transition: all 0.2s;
+    margin-right: 1rem;
+    margin-bottom: 2rem;
 
     .category__photo {
         font-size: 6rem;
@@ -102,6 +106,7 @@
 
         width: 100%;
     }
+
 
     &:hover {
         transform: translateY(-1.5rem) scale(1.03);
