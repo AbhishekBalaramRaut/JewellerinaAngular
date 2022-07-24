@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { PortalContentComponent } from '../portal-layout/portal-content/portal-content.component';
 import { PortalFooterComponent } from '../portal-layout/portal-footer/portal-footer.component';
@@ -39,7 +41,8 @@ import { ProfileComponent } from './profile/profile.component';
   imports: [
     CommonModule,
     BreadcrumbModule,
-    PagesRoutingModule
+    PagesRoutingModule,
+    NgbModule
   ]
 })
 export class PagesModule { }

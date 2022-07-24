@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './cart/checkout/checkout.component';
 import { CategoryComponent } from './category/category.component';
+import { ProductComponent } from './category/product/product.component';
 import { HomeComponent } from './home/home.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -43,6 +44,19 @@ const routes: Routes = [
             level: 2,
             disabled: true,
             label: 'Category'
+          }
+        }
+      },
+      {
+        path: 'home/category/product',
+        component: ProductComponent,
+        data: {
+          label: 'Product',
+          breadcrumb: {
+            routerLink: '/portal/home/product',
+            level: 3,
+            disabled: true,
+            label: 'Product'
           }
         }
       },

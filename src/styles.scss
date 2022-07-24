@@ -26,12 +26,15 @@
     box-sizing: border-box;
 }
 
-ul {
+ul, ol {
     list-style-type: none;
     padding: 0;
     margin:0;
 }
 
+ul , ol {
+    padding-left: 0px !important;
+}
 html {
     // This defines what 1rem is
     font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
@@ -79,3 +82,124 @@ ul li.home:only-child {
     display: none;
     opacity: 0;
 }
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+.picsum-img-wrapper {
+    text-align: center;
+
+    img {
+        height: 350px;
+        max-height: 400px;
+    }
+
+}
+
+.carousel-control-next,.carousel-control-prev {
+    background: $color-tertiary-light-1;
+    background-size: cover;
+    height: 40px;
+    width: 40px;
+    padding: 4px;
+    border-radius: 50%;
+    border-radius: 50%;
+    top: 50%;
+}
+.carousel-control-prev-icon, .carousel-control-next-icon  {
+    display: inline-block;
+}
+
+.carousel-control-prev-icon {
+    background-image: url("/assets/icons/pages/arrow-left-solid.svg");
+}
+
+.carousel-control-next-icon {
+    background-image: url("/assets/icons/pages/arrow-right-solid.svg");
+}
+
+
+//plus minus circle
+
+.circle{
+    width: 35px;
+    height: 35px;
+    padding: 10px;
+    border-radius:100%;
+    position:relative;
+    background-color: $color-tertiary-light-1;
+    display:inline-block;
+    vertical-align:middle;
+    opacity: 0.8;
+    cursor: pointer;
+  }
+  
+  .circle:hover {
+    opacity: 1;
+  }
+
+  .circle.plus:before,
+  .circle.plus:after {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      right: 8px;
+      bottom: 8px;
+      background:#fff;
+      
+  }
+
+  .circle.plus:before{
+      width: 2px;
+      margin: 2px auto;
+  }
+  .circle.plus:after{
+      margin: auto 2px;
+      height: 2px;
+  }
+  
+  
+  /* and a bonus!!! minus :-) */
+  .circle.minus:before{
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      right: 8px;
+      bottom: 8px;
+      background:#fff;
+      margin: auto 2px;
+      height: 2px;
+  }
+
+  @media only screen and (max-width: 768px) {
+
+    .circle{
+        width: 15px;
+        height: 15px;
+      }
+
+      .circle.minus:before{
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        right: 2px;
+        bottom: 2px;
+        background:#fff;
+        margin: auto 2px;
+        height: 2px;
+    }
+
+    .circle.plus:before,
+    .circle.plus:after {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        right: 2px;
+        bottom: 2px;
+        background:#fff;
+        
+    }
+  }

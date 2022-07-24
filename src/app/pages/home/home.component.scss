@@ -71,7 +71,7 @@
         margin-right: 3rem;
     }
 
-    @media only screen and (max-width: 600pxl) {
+    @media only screen and (max-width: 600px) {
         margin-right: 0;
         margin-bottom: 3rem;
     }
@@ -115,4 +115,10 @@
 
 h3.heading-tertiary {
     padding: 2rem;
+}
+
+main.home-view {
+    margin-top: -2rem;
+    position: relative;
+    z-index: 14;
 }

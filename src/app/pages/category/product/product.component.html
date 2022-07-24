@@ -1,1 +1,82 @@
-<p>product works!</p>
+<div class="page-content">
+   
+    <div class="page-content-container">
+      
+        <div class="title">
+          <div class="back-btn">
+            <img src="assets/icons/pages/arrow-left-solid-white.svg" alt="">
+            Go Back
+          </div>
+            <h2>Delicious Apples</h2>
+            <span>COD: 45999</span>
+        </div>
+       <div class="description">
+        <section class="product">
+            <div class="product__photo">
+                  
+                       <ngb-carousel *ngIf="images">
+                        <ng-template ngbSlide>
+                          <div class="picsum-img-wrapper">
+                            <img src="assets/images/pages/dashboard/1.jpg" alt="Random first slide">
+                          </div>
+                          <!-- <div class="carousel-caption">
+                            <h3>First slide label</h3>
+                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                          </div> -->
+                        </ng-template>
+                        <ng-template ngbSlide>
+                          <div class="picsum-img-wrapper">
+                            <img src="assets/images/pages/dashboard/2.jpg" alt="Random second slide">
+                          </div>
+                          <!-- <div class="carousel-caption">
+                            <h3>Second slide label</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                          </div> -->
+                        </ng-template>
+                        <ng-template ngbSlide>
+                          <div class="picsum-img-wrapper">
+                            <img src="assets/images/pages/dashboard/3.jpg" alt="Random third slide">
+                          </div>
+                          <!-- <div class="carousel-caption">
+                            <h3>Third slide label</h3>
+                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                          </div> -->
+                        </ng-template>
+                      </ngb-carousel>
+                      
+    
+            </div>
+            <div class="product__info">
+           
+                <div class="price-container">
+                    <span class="price-text">Price  :</span>  <span class="price"> ₹  7.93</span>
+                </div>
+              
+                <div class="description">
+                    <h3>Description</h3>
+                    <ul>
+                        <li>Apples are nutricious</li>
+                        <li>Apples may be good for weight loss</li>
+                        <li>Apples may be good for bone health</li>
+                        <li>They're linked to a lowest risk of diabetes</li>
+                    </ul>
+                </div>
+                <!-- <button class="buy--btn">ADD TO CART</button> -->
+                <div class="already-in-cart">
+                    
+                  <a>
+                      <span class="circle plus"></span>
+                  </a>
+                  
+                  <span>2</span>
+                  
+                  <a>
+                      <span class="circle minus"></span>
+                  </a>
+              </div>
+            </div>
+        </section>
+        </div>
+
+    </div>
+</div>
