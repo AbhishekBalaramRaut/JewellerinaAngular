@@ -1,1 +1,72 @@
-<p>profile works!</p>
+
+<div class="page-content">
+   
+    <div class="page-content-container">
+      
+        <div class="title">
+            <h2>User Profile</h2>
+        </div>
+       <div class="description">
+        
+        
+        <form class="userform">
+            
+            <div class="image-container">
+                <img class="profile_icon" src="assets/icons/sidebar/user-gray.svg" />
+            </div>
+
+            <div class="user-info">
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Name</label>
+                    <div class="col-sm-10" *ngIf="!editOn">
+                      <input type="text" readonly class="form-control-plaintext" id="staticEmail" name="staticEmail" value="Abhishek Raut">
+                    </div>
+                    <div class="col-sm-10" *ngIf="editOn">
+                        <input type="text"  class="form-control textfield" required id="staticEmailEdit" name="staticEmailEdit" value="Abhishek Raut">
+                      </div>
+                  </div>
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Mobile</label>
+                    <div class="col-sm-10">
+                      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="808741914">
+                    </div>
+                  </div>
+                <div class="form-group row">
+                  <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                  <div class="col-sm-10">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="emai1l@example.com">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                  <div class="col-sm-10" *ngIf="editOn">
+                    <input type="password" class="form-control textfield" id="inputPasswordEdit" name="inputPasswordEdit"  required placeholder="Password">
+                  </div>
+                  <div class="col-sm-10" *ngIf="!editOn">
+                    <span>Password </span>
+                  </div>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-success" *ngIf="!editOn" (click)="editInfo()">Edit Info</button>
+         
+                    <button type="button" class="btn btn-warning" *ngIf="editOn" (click)="confirmInfo()">Confirm</button>
+                    <button type="button" class="btn btn-light" *ngIf="editOn"(click)="cancelInfo()" >Cancel</button>
+    
+                   
+                </div>
+                <p class="note">Note: Only name and password can be changed. You may be asked to relogin.</p>
+            </div>
+            
+          </form>
+        
+
+
+         </div>
+
+    </div>
+</div>
+
+
+
+
+

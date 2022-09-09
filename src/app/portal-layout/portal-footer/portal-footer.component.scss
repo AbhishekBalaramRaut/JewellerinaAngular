@@ -45,3 +45,9 @@
     text-align: center;
     width: 70%;
 }
+
+@media only screen and (max-width: 600px) {
+    .copyright {
+        font-size: 2.4rem;
+    }
+}

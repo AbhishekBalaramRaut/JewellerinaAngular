@@ -27,4 +27,8 @@ export class PortalSidebarComponent implements OnInit {
     }
    
   }
+
+  logout() {
+    alert('redirect to login');
+  }
 }

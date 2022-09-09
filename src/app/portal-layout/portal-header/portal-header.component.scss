@@ -193,10 +193,34 @@
         text-align: center;
     }
 
+    .pheader {
+        height: 10rem;
+    }
 
 }
 @media (max-width: 600px) {
     .user-nav__notification {
         top: 0.4rem !important  ;
     }
+
+    img.logo {
+        height: 5rem !important;
+        margin-top: -0.8rem;
+        margin-left: 5rem;
+
+    }
+
+    .user-nav__notification {
+        text-align: center;
+        min-height: 3.25rem;
+        min-width: 3.25rem;
+        height: auto;
+        width: auto;
+        font-size: 1.8rem;
+    }
+
+    img.side-nav__icon {
+        height: 3.8rem;
+    }
+
 }

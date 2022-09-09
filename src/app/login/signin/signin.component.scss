@@ -1,0 +1,95 @@
+@import '../../../assets/scss/abstracts/variables';
+@import '../../../assets/scss/abstracts/mixins';
+
+
+
+.signInImage {
+    color: #171718;
+}
+.gradient-custom-3 {
+    /* fallback for old browsers */
+    background: #c7d377;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(227, 224, 41, 0.5), rgba(224, 230, 112, 0.5));
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right,  rgba(227, 224, 41, 0.5), rgba(224, 230, 112, 0.5))
+    }
+    .gradient-custom-4 {
+    /* fallback for old browsers */
+    background: #d9d98f;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right,  rgba(227, 224, 41, 0.5), rgba(224, 230, 112, 0.5));
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right,  rgba(227, 224, 41, 0.5), rgba(224, 230, 112, 0.5))
+    }
+
+    .terms-container {
+        margin-top: 2rem;
+    }
+    label.termsAndConditions {
+        font-size: 14px;
+    }
+    input#termsAndConditions {
+        font-size: 16px;
+    }
+    
+    .already-acc {
+        font-size: 16px;
+
+    }
+    .form-group {
+        margin: 1rem 0;
+        label {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            padding: 2px 5px 5px 10px;
+            font-size: 16px;
+        }
+
+    
+    }
+
+
+    .signInImage {
+        background-image: url('/assets/images/signIn/girl.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+
+
+    button {
+        border: none;
+        outline: 0;
+        padding: 12px;
+        color: white;
+        background-color: $color-tertiary-light;
+        text-align: center;
+        cursor: pointer;
+        width: 100%;
+        font-size: 18px;
+        border-radius: 0 0 5px 5px;
+        opacity: 0.8;
+      }
+      
+      button:hover {
+        opacity: 1;
+      }
+
+
+@media only screen and (max-width: 600px) {
+      .block-display {
+        display: block;
+      }
+
+      .text-uppercase {
+        font-size: 24px;
+    }
+
+    }

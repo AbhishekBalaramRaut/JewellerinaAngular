@@ -100,15 +100,15 @@ const routes: Routes = [
         }
       },
       {
-        path: 'checkout',
+        path: 'cart/checkout',
         component: CheckoutComponent,
         data: {
-          label: 'Checkout',
+          label: 'Order Preview',
           breadcrumb: {
-            routerLink: '/portal/checkout',
-            level: 1,
+            routerLink: '/portal/cart/checkout',
+            level: 2,
             disabled: true,
-            label: 'Checkout'
+            label: 'Order Preview'
           }
         }
       },

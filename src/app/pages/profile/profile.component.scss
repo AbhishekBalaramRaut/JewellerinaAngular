@@ -1,0 +1,149 @@
+
+
+@import '../../../assets/scss/abstracts/variables';
+@import '../../../assets/scss/abstracts/mixins';
+
+.page-content {
+    font-size: 1.4rem;
+    display: flex;
+    padding: 3rem;
+    background-color: $color-grey-light-1;
+
+
+    @media only screen and (max-width: 900px) {
+        padding: 3rem;
+    }
+
+    @media only screen and (max-width: 600px) {
+        flex-direction: column;
+    }
+}
+
+.page-content-container {
+    background-color: #fff;
+    box-shadow: rgb(234, 224, 224);
+    // padding: 3rem;
+    flex: 0 0 100%;
+    margin-right: 4.5rem;
+    border-radius: 0.5rem;
+    position: relative;
+
+    .title {
+        background: $color-tertiary-light;
+        padding: 1.5rem 0 1rem 3rem;
+        vertical-align: center;
+        border-radius: 5px 5px 0 0;
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: #fff;
+
+        h2 {
+            font-weight: bold;
+        }
+    }
+    .description {
+        padding: 3rem 0;
+        color: $color-grey-dark-2;
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    @media only screen and (max-width: 900px) {
+        padding: 0rem;
+        margin-right: 3rem;
+    }
+
+    @media only screen and (max-width: 600px) {
+        margin-right: 0;
+        margin-bottom: 3rem;
+        
+        .title {
+            padding: 3rem;
+           
+
+            h2 {
+                font-size: 2.5rem;
+                letter-spacing: 2px;
+            }
+        }
+    }  
+}
+
+.description {
+	clear: left;
+}
+
+.textfield {
+    width: 200px !important;
+}
+
+.btn {
+    display: inline-block;
+    margin-right: 2rem;
+    font-size: 14px;
+    padding: 3px 2rem 6px 2rem;
+    border-radius: 5px;
+    margin-top: 2rem;
+}
+
+.note {
+    font-size: 12px;
+    margin-top: 1rem;
+}
+
+.profile_icon {
+    width: 150px;
+}
+
+.col-form-label {
+    font-weight: bold;
+}
+
+.userform {
+    display: flex;
+    justify-content: space-around;
+
+    .image-container {
+        flex: 1;
+    }
+    .user-info {
+        flex: 3;
+    }
+}
+
+.form-group.row {
+    margin: 1rem 0;
+}
+
+@media only screen and (max-width: 600px) {
+
+    .userform {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    
+        .image-container {
+            flex: 1;
+            text-align: center;
+        }
+        .user-info {
+            flex: 3;
+            font-size: 3rem;
+        }
+    }
+ 
+    .btn {
+       
+        font-size: 3rem;
+    
+    }
+    
+    .note {
+        font-size: 22px;
+    }
+
+    .textfield {
+        width: 250px !important;
+        font-size: 24px;
+    }
+}  

@@ -303,9 +303,28 @@ hr{
 
     .amount {
         padding-top: 0px;
+        font-weight: bold;
     }
 
     .checkout {
         margin-right: 6rem;
+    }
+
+    .page-content-container .title h2{
+        font-size: 3.5rem;
+    }
+
+    .category {
+        h4 {
+            font-size: 22px;
+        }
+    }
+
+    .c-title {
+        font-size: 22px;
+    }
+
+    .already-in-cart span {
+        font-size: 3.6rem;
     }
 }

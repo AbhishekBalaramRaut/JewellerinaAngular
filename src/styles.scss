@@ -48,7 +48,7 @@ html {
     }
 
     @include respond(phone) { // width < 600?
-        font-size: 40%; //1 rem = 8px, 8/16 = 50%
+        font-size: 50%; //1 rem = 8px, 8/16 = 50%
     }
     
     @include respond(big-desktop) {
@@ -174,10 +174,10 @@ ul li.home:only-child {
 
   @media only screen and (max-width: 768px) {
 
-    .circle{
-        width: 15px;
-        height: 15px;
-      }
+    .circle {
+        width: 35px;
+        height: 35px;
+    }
 
       .circle.minus:before{
         content: '';
@@ -202,4 +202,14 @@ ul li.home:only-child {
         background:#fff;
         
     }
+
+    .p-breadcrumb {
+        font-size: 14px;
+
+        li.p-element {
+            font-size: 20px;
+        }
+    }
   }
+
+ 

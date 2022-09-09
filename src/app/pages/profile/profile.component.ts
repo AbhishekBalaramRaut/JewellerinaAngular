@@ -7,9 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
+  editOn = false;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  editInfo() {
+    this.editOn = true;
+  }
+
+  confirmInfo() {
+    this.editOn = false;
+  }
+
+  cancelInfo() {
+    this.editOn = false;
+  }
 }

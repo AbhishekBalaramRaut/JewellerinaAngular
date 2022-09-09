@@ -1,1 +1,87 @@
-<p>order-history works!</p>
+
+
+<div class="page-content">
+   
+    <div class="page-content-container">
+      
+        <div class="title">
+            <h2>Order History</h2>
+        </div>
+       <div class="description">
+     
+        <div class="cards">
+            <div class="card" *ngFor="let order of orders">
+                <div class="info-section">
+                    <div class="section-left">
+
+                        <div class="key-val">
+                            <span class="key">Order #: &nbsp;</span>
+                            <span class="val">{{order?.id}}</span>
+                        </div>
+                        <div class="key-val">
+                            <span class="key">Status: &nbsp;</span>
+                            <span class="val">{{order?.status}}</span>
+                        </div>
+                    </div>
+                    <div class="section-right">
+
+                        <div class="key-val">
+                            <span class="key">Order Date:</span>
+                            <span class="val">{{order?.date}}</span>
+                        </div>
+                        <div class="key-val">
+                            <span class="key">Items:</span>
+                            <span class="val">{{order?.items}}</span>
+                        </div>
+                        <div class="key-val">
+                            <span class="key">Delivery:</span>
+                            <span class="val">{{order?.delivery}}</span>
+                        </div>
+                        <div class="key-val">
+                            <span class="key">Payment:</span>
+                            <span class="val">{{order?.payment}}</span>
+                        </div>
+                    </div>
+                    <div class="icons">
+                        <button  class="btn btn-success cancel" *ngIf="order?.status == 'In Progress'" >Cancel Order</button>
+                        <div  class="status-done" *ngIf="order?.status != 'In Progress'" >Completed</div>
+                        <img src="assets/images/common/fa/arrow-down-solid.svg" height="15" class="expand" 
+                          [ngClass]="{'expanded': order?.expand}"
+                        (click)="expandOrder(order?.id)" />
+                    </div>
+
+                 
+                </div>
+                <div class="expanded-info"  [ngClass]="{'expanded': order?.expand}">
+                    <div class="mobile-left">
+                        <div class="key-val">
+                            <span class="key">Order Date:&nbsp;</span>
+                            <span class="val">{{order?.date}}</span>
+                        </div>
+                        <div class="key-val">
+                            <span class="key">Items:&nbsp;</span>
+                            <span class="val">{{order?.items}}</span>
+                        </div>
+                    </div>
+                    <div class="mobile-right">
+                        <div class="key-val">
+                            <span class="key">Delivery:&nbsp;</span>
+                            <span class="val">{{order?.delivery}}</span>
+                        </div>
+                        <div class="key-val">
+                            <span class="key">Payment:&nbsp;</span>
+                            <span class="val">{{order?.payment}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+
+               </div>
+
+    </div>
+</div>
+
+

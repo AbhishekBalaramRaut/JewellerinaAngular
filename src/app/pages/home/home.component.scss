@@ -122,3 +122,10 @@ main.home-view {
     position: relative;
     z-index: 14;
 }
+
+@media only screen and (max-width: 600px) {
+  
+    h3.heading-tertiary {
+        font-size: 3rem;
+    }
+}

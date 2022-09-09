@@ -14,6 +14,10 @@ export class PortalHeaderComponent implements OnInit {
   }
 
   showCart() {
-    this.router.navigate(['cart']);
+    this.router.navigate(['portal/cart']);
+  }
+
+  logout() {
+    alert('redirect to login');
   }
 }
