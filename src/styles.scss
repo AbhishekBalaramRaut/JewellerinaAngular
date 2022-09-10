@@ -1,4 +1,4 @@
-@import url('../node_modules/bootstrap/dist/css/bootstrap.min.css');
+@import url("../node_modules/bootstrap/dist/css/bootstrap.min.css");
 @import "assets/scss/abstracts/functions";
 @import "assets/scss/abstracts/mixins";
 @import "assets/scss/abstracts/variables";
@@ -17,199 +17,203 @@
 @import "assets/scss/layout/header";
 @import "assets/scss/layout/navigation";
 
-
 *,
 *::after,
 *::before {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-ul, ol {
-    list-style-type: none;
-    padding: 0;
-    margin:0;
+ul,
+ol {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
-ul , ol {
-    padding-left: 0px !important;
+ul,
+ol {
+  padding-left: 0px !important;
 }
 html {
-    // This defines what 1rem is
-    font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+  // This defines what 1rem is
+  font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
 
-    @include respond(tab-land) { // width < 1200?
-        font-size: 56.25%; //1 rem = 9px, 9/16 = 50%
-    }
+  @include respond(tab-land) {
+    // width < 1200?
+    font-size: 56.25%; //1 rem = 9px, 9/16 = 50%
+  }
 
-    @include respond(tab-port) { // width < 900?
-        font-size: 50%; //1 rem = 8px, 8/16 = 50%
-    }
+  @include respond(tab-port) {
+    // width < 900?
+    font-size: 50%; //1 rem = 8px, 8/16 = 50%
+  }
 
-    @include respond(phone) { // width < 600?
-        font-size: 50%; //1 rem = 8px, 8/16 = 50%
-    }
-    
-    @include respond(big-desktop) {
-        font-size: 75%; //1rem = 12, 12/16
-    }
+  @include respond(phone) {
+    // width < 600?
+    font-size: 50%; //1 rem = 8px, 8/16 = 50%
+  }
+
+  @include respond(big-desktop) {
+    font-size: 75%; //1rem = 12, 12/16
+  }
 }
 
 body {
-    box-sizing: border-box;
-    padding: 0;
-    font-family: "Lato", sans-serif;
-    font-weight: 400;
-    line-height: 1.7;
-    color: $color-grey-dark;
+  box-sizing: border-box;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  color: $color-grey-dark;
 
-    @include respond(tab-port) {
-        padding: 0;
-    }
+  @include respond(tab-port) {
+    padding: 0;
+  }
 }
 
 ::selection {
-    background-color: $color-primary;
-    color: $color-white;
+  background-color: $color-primary;
+  color: $color-white;
 }
 
 [class^="fa"] {
-    color: #fff;
+  color: #fff;
 }
 
 ul li.home:only-child {
-    display: none;
-    opacity: 0;
+  display: none;
+  opacity: 0;
 }
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
 
 .picsum-img-wrapper {
-    text-align: center;
+  text-align: center;
 
-    img {
-        height: 350px;
-        max-height: 400px;
-    }
-
+  img {
+    height: 350px;
+    max-height: 400px;
+  }
 }
 
-.carousel-control-next,.carousel-control-prev {
-    background: $color-tertiary-light-1;
-    background-size: cover;
-    height: 40px;
-    width: 40px;
-    padding: 4px;
-    border-radius: 50%;
-    border-radius: 50%;
-    top: 50%;
+.carousel-control-next,
+.carousel-control-prev {
+  background: $color-tertiary-light-1;
+  background-size: cover;
+  height: 40px;
+  width: 40px;
+  padding: 4px;
+  border-radius: 50%;
+  border-radius: 50%;
+  top: 50%;
 }
-.carousel-control-prev-icon, .carousel-control-next-icon  {
-    display: inline-block;
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  display: inline-block;
 }
 
 .carousel-control-prev-icon {
-    background-image: url("/assets/icons/pages/arrow-left-solid.svg");
+  background-image: url("/assets/icons/pages/arrow-left-solid.svg");
 }
 
 .carousel-control-next-icon {
-    background-image: url("/assets/icons/pages/arrow-right-solid.svg");
+  background-image: url("/assets/icons/pages/arrow-right-solid.svg");
 }
-
 
 //plus minus circle
 
-.circle{
+.circle {
+  width: 35px;
+  height: 35px;
+  padding: 10px;
+  border-radius: 100%;
+  position: relative;
+  background-color: $color-tertiary-light-1;
+  display: inline-block;
+  vertical-align: middle;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.circle:hover {
+  opacity: 1;
+}
+
+.circle.plus:before,
+.circle.plus:after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  background: #fff;
+}
+
+.circle.plus:before {
+  width: 2px;
+  margin: 2px auto;
+}
+.circle.plus:after {
+  margin: auto 2px;
+  height: 2px;
+}
+
+/* and a bonus!!! minus :-) */
+.circle.minus:before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  background: #fff;
+  margin: auto 2px;
+  height: 2px;
+}
+
+@media only screen and (max-width: 768px) {
+  .circle {
     width: 35px;
     height: 35px;
-    padding: 10px;
-    border-radius:100%;
-    position:relative;
-    background-color: $color-tertiary-light-1;
-    display:inline-block;
-    vertical-align:middle;
-    opacity: 0.8;
-    cursor: pointer;
   }
-  
-  .circle:hover {
-    opacity: 1;
+
+  .circle.minus:before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    background: #fff;
+    margin: auto 2px;
+    height: 2px;
   }
 
   .circle.plus:before,
   .circle.plus:after {
-      content: '';
-      position: absolute;
-      top: 8px;
-      left: 8px;
-      right: 8px;
-      bottom: 8px;
-      background:#fff;
-      
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    background: #fff;
   }
 
-  .circle.plus:before{
-      width: 2px;
-      margin: 2px auto;
-  }
-  .circle.plus:after{
-      margin: auto 2px;
-      height: 2px;
-  }
-  
-  
-  /* and a bonus!!! minus :-) */
-  .circle.minus:before{
-      content: '';
-      position: absolute;
-      top: 8px;
-      left: 8px;
-      right: 8px;
-      bottom: 8px;
-      background:#fff;
-      margin: auto 2px;
-      height: 2px;
-  }
+  .p-breadcrumb {
+    font-size: 14px;
 
-  @media only screen and (max-width: 768px) {
-
-    .circle {
-        width: 35px;
-        height: 35px;
-    }
-
-      .circle.minus:before{
-        content: '';
-        position: absolute;
-        top: 2px;
-        left: 2px;
-        right: 2px;
-        bottom: 2px;
-        background:#fff;
-        margin: auto 2px;
-        height: 2px;
-    }
-
-    .circle.plus:before,
-    .circle.plus:after {
-        content: '';
-        position: absolute;
-        top: 2px;
-        left: 2px;
-        right: 2px;
-        bottom: 2px;
-        background:#fff;
-        
-    }
-
-    .p-breadcrumb {
-        font-size: 14px;
-
-        li.p-element {
-            font-size: 20px;
-        }
+    li.p-element {
+      font-size: 20px;
     }
   }
+}
 
- 
+input.form-control {
+  &:focus {
+    box-shadow: none;
+  }
+}

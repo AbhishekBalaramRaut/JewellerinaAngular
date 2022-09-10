@@ -1,95 +1,271 @@
-@import '../../../assets/scss/abstracts/variables';
-@import '../../../assets/scss/abstracts/mixins';
+@import "../../../assets/scss/abstracts/variables";
+@import "../../../assets/scss/abstracts/mixins";
 
+.welcome-page {
+  position: relative;
+  left: -30%;
+  margin-left: auto;
+  margin-right: auto;
+}
 
+.logo {
+  height: 30rem;
+  margin: 0 auto;
+}
+
+.card {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+  position: relative;
+  transition: visibility 0s, opacity 2.5s linear;
+
+  &.signupopen {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    animation: signupopen 0.8s normal ease-in-out;
+  }
+}
+
+input.ng-touched.ng-valid:not(input[type="checkbox"]),
+input.ng-touched.ng-valid.required:not(input[type="checkbox"]) {
+  border-left: 5px solid #42a948; /* green */
+}
+
+input.ng-touched.ng-invalid:not(form):not(input[type="checkbox"]) {
+  border-left: 5px solid #a94442; /* red */
+}
+
+.signin:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@keyframes signupopen {
+  0% {
+    opacity: 0.2;
+    top: -100px;
+  }
+  100% {
+    opacity: 1;
+    top: 0px;
+  }
+}
 
 .signInImage {
-    color: #171718;
+  color: #171718;
 }
 .gradient-custom-3 {
-    /* fallback for old browsers */
-    background: #c7d377;
-    
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right, rgba(227, 224, 41, 0.5), rgba(224, 230, 112, 0.5));
-    
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right,  rgba(227, 224, 41, 0.5), rgba(224, 230, 112, 0.5))
-    }
-    .gradient-custom-4 {
-    /* fallback for old browsers */
-    background: #d9d98f;
-    
-    /* Chrome 10-25, Safari 5.1-6 */
-    background: -webkit-linear-gradient(to right,  rgba(227, 224, 41, 0.5), rgba(224, 230, 112, 0.5));
-    
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right,  rgba(227, 224, 41, 0.5), rgba(224, 230, 112, 0.5))
-    }
+  /* fallback for old browsers */
+  background: #c7d377;
 
-    .terms-container {
-        margin-top: 2rem;
-    }
-    label.termsAndConditions {
-        font-size: 14px;
-    }
-    input#termsAndConditions {
-        font-size: 16px;
-    }
-    
-    .already-acc {
-        font-size: 16px;
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(
+    to right,
+    rgba(227, 224, 41, 0.5),
+    rgba(224, 230, 112, 0.5)
+  );
 
-    }
-    .form-group {
-        margin: 1rem 0;
-        label {
-            font-size: 14px;
-            font-weight: 500;
-        }
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(
+    to right,
+    rgba(227, 224, 41, 0.5),
+    rgba(224, 230, 112, 0.5)
+  );
+}
+.gradient-custom-4 {
+  /* fallback for old browsers */
+  background: #d9d98f;
 
-        .form-control {
-            padding: 2px 5px 5px 10px;
-            font-size: 16px;
-        }
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(
+    to right,
+    rgba(227, 224, 41, 0.5),
+    rgba(224, 230, 112, 0.5)
+  );
 
-    
-    }
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(
+    to right,
+    rgba(227, 224, 41, 0.5),
+    rgba(224, 230, 112, 0.5)
+  );
+}
 
+.terms-container {
+  margin-top: 2rem;
+}
+label.termsAndConditions {
+  font-size: 14px;
+}
+input#termsAndConditions {
+  font-size: 16px;
+}
 
-    .signInImage {
-        background-image: url('/assets/images/signIn/girl.jpg');
-        background-size: cover;
-        background-position: center;
-    }
+.already-acc {
+  font-size: 16px;
+}
+.form-group {
+  margin: 1rem 0;
+  label {
+    font-size: 14px;
+    font-weight: 500;
+  }
 
+  .form-control {
+    padding: 2px 5px 5px 10px;
+    font-size: 16px;
+  }
+}
 
-    button {
-        border: none;
-        outline: 0;
-        padding: 12px;
-        color: white;
-        background-color: $color-tertiary-light;
-        text-align: center;
-        cursor: pointer;
-        width: 100%;
-        font-size: 18px;
-        border-radius: 0 0 5px 5px;
-        opacity: 0.8;
-      }
-      
-      button:hover {
-        opacity: 1;
-      }
+.signInImage {
+  background-image: url("/assets/images/signIn/girl.jpg");
+  background-size: cover;
+  background-position: center;
+}
 
+button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: $color-tertiary-light;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+  border-radius: 0 0 5px 5px;
+  opacity: 0.8;
+}
+
+button:hover {
+  opacity: 1;
+}
+
+button.singInPage {
+  position: absolute;
+  top: 3rem;
+  opacity: 0.8;
+  width: 180px;
+  border-radius: 10px;
+  background-color: $color-tertiary-light-1;
+  color: rgb(52, 33, 14);
+
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+    transform: scale(1.1);
+    background-color: $color-tertiary-light-1;
+    color: $color-tertiary-dark;
+    font-weight: 500;
+    transition: transform 0.5s;
+  }
+}
+
+@media only screen and (max-width: 1080) {
+  .welcome-page {
+    position: relative;
+    left: 7%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .logo {
+    height: 15rem !important;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (max-width: 920px) {
+  .welcome-page {
+    position: relative;
+    left: -19%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .logo {
+    height: 20rem;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (max-width: 830px) {
+  .welcome-page {
+    left: -2%;
+  }
+  .logo {
+    height: 17rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .welcome-page {
+    position: relative;
+    left: -2%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .logo {
+    height: 17rem;
+    margin: 0 auto;
+  }
+}
 
 @media only screen and (max-width: 600px) {
-      .block-display {
-        display: block;
-      }
+  .welcome-page {
+    left: 11%;
+  }
+  button.singInPage {
+    opacity: 1;
+  }
+  .logo {
+    height: 14rem;
+  }
+}
 
-      .text-uppercase {
-        font-size: 24px;
-    }
+@media only screen and (max-width: 500px) {
+  .block-display {
+    display: block;
+  }
 
-    }
+  .text-uppercase {
+    font-size: 24px;
+  }
+  .welcome-page {
+    position: relative;
+    left: 7%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .logo {
+    height: 13rem;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (max-width: 413px) {
+  .welcome-page {
+    left: 10%;
+  }
+  .logo {
+    height: 11rem;
+  }
+}
+
+@media only screen and (max-width: 370px) {
+  .welcome-page {
+    left: 5%;
+  }
+  .logo {
+    height: 10rem;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .welcome-page {
+    left: 7%;
+  }
+  .logo {
+    height: 8rem;
+  }
+}
