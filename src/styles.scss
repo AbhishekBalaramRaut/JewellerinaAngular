@@ -174,6 +174,15 @@ ul li.home:only-child {
   height: 2px;
 }
 
+@media only screen and (max-width: 1300px) {
+  .p-breadcrumb {
+    font-size: 22px;
+
+    li.p-element {
+      font-size: 22px;
+    }
+  }
+}
 @media only screen and (max-width: 768px) {
   .circle {
     width: 35px;
@@ -204,10 +213,10 @@ ul li.home:only-child {
   }
 
   .p-breadcrumb {
-    font-size: 14px;
+    font-size: 22px;
 
     li.p-element {
-      font-size: 20px;
+      font-size: 22px;
     }
   }
 }
@@ -215,5 +224,11 @@ ul li.home:only-child {
 input.form-control {
   &:focus {
     box-shadow: none;
+  }
+}
+
+@media only screen and (max-width: 340px) {
+  .picsum-img-wrapper img {
+    height: 250px;
   }
 }

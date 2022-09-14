@@ -34,7 +34,10 @@
 
        <div class="user-nav__icon-box" (click)="showCart()">
             <img class="side-nav__icon" src="assets/icons/header/cart.svg" height="22" title="View Cart" />
-            <span class="user-nav__notification">7</span>
+            <ng-container *ngIf="count > 0">
+                <span class="user-nav__notification">{{count}}</span>
+            </ng-container>
+            
          </div>
     </nav>
 </header>

@@ -2,31 +2,42 @@
    
     <div class="page-content-container">
         <div class="title">
-            <h2>Category Name</h2>
+            <h2>{{category?.name}}</h2>
         </div>
        <div class="description">
         <section class="items">
-            <div class="item__card">
-                <img src="assets/images/pages/dashboard/1.jpg" class="card_image" (click)="openItem()" alt="Denim Jeans" style="width:100%">
-                <h1>Tailored Jeans</h1>
-                <p class="price">₹19.99</p>
-                <!-- <div class="already-in-cart">
+            
+            <ng-container *ngFor="let item of category?.items">
+                <div class="item__card">
+                    <img [src]="item?.imagePath" class="card_image" (click)="openItem(item?.id)" alt="{{item?.name}}" style="width:100%">
+                    <div class="name">
+                        <h4>{{item?.name}}</h4>
+                    </div>
                     
-                    <a>
-                        <span class="circle plus"></span>
-                    </a>
-                    
-                    <span>2</span>
-                    
-                    <a>
-                        <span class="circle minus"></span>
-                    </a>
-                </div> -->
-                <button>Add to Cart</button>
-              </div>
+                    <p class="price">₹ {{item?.price}}</p>
+                    <!-- <div class="already-in-cart">
+                        
+                        <a>
+                            <span class="circle plus"></span>
+                        </a>
+                        
+                        <span>2</span>
+                        
+                        <a>
+                            <span class="circle minus"></span>
+                        </a>
+                    </div> -->
+                    <button>Add to Cart</button>
+                </div>
+               
+            </ng-container>
+
+            <div  class="noRecords" *ngIf='!category || category?.items.length === 0'>No Results</div>
+
+       
     
     
-              <div class="item__card">
+              <!-- <div class="item__card">
                 <img src="assets/images/pages/dashboard/1.jpg" class="card_image" alt="Denim Jeans" style="width:100%">
                 <h1>Tailored Jeans</h1>
                 <p class="price">₹19.99</p>
@@ -42,115 +53,9 @@
                         <span class="circle minus"></span>
                     </a>
                 </div>
-                <!-- <button>Add to Cart</button> -->
-              </div>
-              <div class="item__card">
-                <img src="assets/images/pages/dashboard/1.jpg" class="card_image" alt="Denim Jeans" style="width:100%">
-                <h1>Tailored Jeans</h1>
-                <p class="price">₹19.99</p>
-                <div class="already-in-cart">
-                    
-                    <a>
-                        <span class="circle plus"></span>
-                    </a>
-                    
-                    <span>2</span>
-                    
-                    <a>
-                        <span class="circle minus"></span>
-                    </a>
-                </div>
-                <!-- <button>Add to Cart</button> -->
-              </div>
-              <div class="item__card">
-                <img src="assets/images/pages/dashboard/1.jpg" class="card_image" alt="Denim Jeans" style="width:100%">
-                <h1>Tailored Jeans</h1>
-                <p class="price">₹19.99</p>
-                <div class="already-in-cart">
-                    
-                    <a>
-                        <span class="circle plus"></span>
-                    </a>
-                    
-                    <span>2</span>
-                    
-                    <a>
-                        <span class="circle minus"></span>
-                    </a>
-                </div>
-                <!-- <button>Add to Cart</button> -->
-              </div>
-              <div class="item__card">
-                <img src="assets/images/pages/dashboard/1.jpg" class="card_image" alt="Denim Jeans" style="width:100%">
-                <h1>Tailored Jeans</h1>
-                <p class="price">₹19.99</p>
-                <div class="already-in-cart">
-                    
-                    <a>
-                        <span class="circle plus"></span>
-                    </a>
-                    
-                    <span>2</span>
-                    
-                    <a>
-                        <span class="circle minus"></span>
-                    </a>
-                </div>
-                <!-- <button>Add to Cart</button> -->
-              </div>
-              <div class="item__card">
-                <img src="assets/images/pages/dashboard/1.jpg" class="card_image" alt="Denim Jeans" style="width:100%">
-                <h1>Tailored Jeans</h1>
-                <p class="price">₹19.99</p>
-                <div class="already-in-cart">
-                    
-                    <a>
-                        <span class="circle plus"></span>
-                    </a>
-                    
-                    <span>2</span>
-                    
-                    <a>
-                        <span class="circle minus"></span>
-                    </a>
-                </div>
-                <!-- <button>Add to Cart</button> -->
-              </div>
-              <div class="item__card">
-                <img src="assets/images/pages/dashboard/1.jpg" class="card_image" alt="Denim Jeans" style="width:100%">
-                <h1>Tailored Jeans</h1>
-                <p class="price">₹19.99</p>
-                <div class="already-in-cart">
-                    
-                    <a>
-                        <span class="circle plus"></span>
-                    </a>
-                    
-                    <span>2</span>
-                    
-                    <a>
-                        <span class="circle minus"></span>
-                    </a>
-                </div>
-                <!-- <button>Add to Cart</button> -->
-              </div><div class="item__card">
-                <img src="assets/images/pages/dashboard/1.jpg" class="card_image"  alt="Denim Jeans" style="width:100%">
-                <h1>Tailored Jeans</h1>
-                <p class="price">₹19.99</p>
-                <div class="already-in-cart">
-                    
-                    <a>
-                        <span class="circle plus"></span>
-                    </a>
-                    
-                    <span>2</span>
-                    
-                    <a>
-                        <span class="circle minus"></span>
-                    </a>
-                </div>
-                <!-- <button>Add to Cart</button> -->
-              </div>
+           
+              </div> -->
+             
         </section>
        </div>
      

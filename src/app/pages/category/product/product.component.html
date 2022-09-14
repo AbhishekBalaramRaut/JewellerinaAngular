@@ -3,45 +3,36 @@
     <div class="page-content-container">
       
         <div class="title">
-          <div class="back-btn">
+          <div class="back-btn" (click)="navigateToCategory()">
             <img src="assets/icons/pages/arrow-left-solid-white.svg" alt="">
             Go Back
           </div>
-            <h2>Delicious Apples</h2>
-            <span>COD: 45999</span>
+            <h2>{{item?.name}}</h2>
+            <span>COD: {{item?.id}}</span>
         </div>
        <div class="description">
         <section class="product">
             <div class="product__photo">
                   
-                       <ngb-carousel *ngIf="images">
+                       <ngb-carousel>
                         <ng-template ngbSlide>
                           <div class="picsum-img-wrapper">
-                            <img src="assets/images/pages/dashboard/1.jpg" alt="Random first slide">
+                            <img [src]="item?.imagePath" alt="{{item?.name}}">
                           </div>
-                          <!-- <div class="carousel-caption">
-                            <h3>First slide label</h3>
-                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                          </div> -->
+             
                         </ng-template>
-                        <ng-template ngbSlide>
+                        <!-- <ng-template ngbSlide>
                           <div class="picsum-img-wrapper">
                             <img src="assets/images/pages/dashboard/2.jpg" alt="Random second slide">
                           </div>
-                          <!-- <div class="carousel-caption">
-                            <h3>Second slide label</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                          </div> -->
+                     
                         </ng-template>
                         <ng-template ngbSlide>
                           <div class="picsum-img-wrapper">
                             <img src="assets/images/pages/dashboard/3.jpg" alt="Random third slide">
                           </div>
-                          <!-- <div class="carousel-caption">
-                            <h3>Third slide label</h3>
-                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                          </div> -->
-                        </ng-template>
+                       
+                        </ng-template> -->
                       </ngb-carousel>
                       
     
@@ -49,16 +40,14 @@
             <div class="product__info">
            
                 <div class="price-container">
-                    <span class="price-text">Price  :</span>  <span class="price"> ₹  7.93</span>
+                    <span class="price-text">Price  :</span>  <span class="price"> ₹  {{item?.price}}</span>
                 </div>
               
                 <div class="description">
                     <h3>Description</h3>
                     <ul>
-                        <li>Apples are nutricious</li>
-                        <li>Apples may be good for weight loss</li>
-                        <li>Apples may be good for bone health</li>
-                        <li>They're linked to a lowest risk of diabetes</li>
+                        <li>&nbsp;{{item?.description}}</li>
+       
                     </ul>
                 </div>
                 <!-- <button class="buy--btn">ADD TO CART</button> -->

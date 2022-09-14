@@ -9,8 +9,9 @@
 <nav class="sidebar">
   
     <ul class="side-nav" [ngClass]="{'show-sidebar': expand,'small-screen': expand}" (click)="routeSelected()">
-        <li class="side-nav__item "   routerLinkActive="side-nav__item--active">
-            <a  class="side-nav__link" [routerLink]="['/portal/home']">
+        <li class="side-nav__item "   routerLinkActive="side-nav__item--active" [routerLinkActiveOptions]="{exact: false}">
+            <a  class="side-nav__link" [routerLink]="['/portal/home']"
+            >
                 <svg class="side-nav__icon">
                     <use xlink:href="assets/images/common/sprite.svg#icon-home"></use>
                 </svg>

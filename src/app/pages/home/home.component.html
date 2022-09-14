@@ -1,16 +1,4 @@
 <main class="home-view">
-    <!-- <div class="gallery">
-        <figure class="gallery__item">
-            <img src="assets/images/pages/dashboard/1.jpg" alt="Photo 1" class="gallery__photo">
-        </figure>
-        <figure class="gallery__item">
-            <img src="assets/images/pages/dashboard/2.jpg" alt="Photo 2" class="gallery__photo">
-        </figure>
-        <figure class="gallery__item">
-            <img src="assets/images/pages/dashboard/3.jpg" alt="Photo 3" class="gallery__photo">
-        </figure>
-    </div> -->
-
 
     <div class="overview">
         <h1 class="overview__heading">
@@ -25,41 +13,16 @@
             
             <section class="section-features">
 
-          
-                        <div class="feature-box" (click)="openCategory(1)">
-                            <img src="assets/images/pages/dashboard/1.jpg" alt="Photo 1" class="category__photo">
-                            <h3 class="heading-tertiary">
-                                Explore the world
-                            </h3>
-                           
-                        </div>
-                
-
-        
-                        <div class="feature-box">
-                            <img src="assets/images/pages/dashboard/1.jpg" alt="Photo 1" class="category__photo">
-                            <h3 class="heading-tertiary">
-                                Explore the world
-                            </h3>
-                           
-                        </div>
-                        <div class="feature-box">
-                            <img src="assets/images/pages/dashboard/1.jpg" alt="Photo 1" class="category__photo">
-                            <h3 class="heading-tertiary">
-                                Explore the world
-                            </h3>
-                           
-                        </div>
-                
-
-        
-                        <div class="feature-box">
-                            <img src="assets/images/pages/dashboard/1.jpg" alt="Photo 1" class="category__photo">
-                            <h3 class="heading-tertiary">
-                                Explore the world
-                            </h3>
-                           
-                        </div>
+                        <ng-container *ngFor="let category of categories">
+                            <div class="feature-box" (click)="openCategory(category?.id)">
+                                <img [src]="category?.imagePath" alt="Photo 1" class="category__photo">
+                                <h3 class="heading-tertiary">
+                                    {{category?.name}}
+                                </h3>
+                               
+                            </div>
+                        </ng-container>
+                        <div  class="noRecords" *ngIf='categories.length === 0'>No Results</div>
 
             </section>
 

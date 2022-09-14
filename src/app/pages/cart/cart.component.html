@@ -6,124 +6,44 @@
             <h2>Shopping Cart</h2>
         </div>
        <div class="description">
-        <div class="category">
-            <h4>Category : Haldi Jewellery</h4>
-        </div>
-        <div class="cart-item">
-            <div class="image-box">
-                <img src="assets/images/pages/dashboard/1.jpg" class="img-cart-item" />
-                </div>
-                <div class="about">
-                <h1 class="c-title">Apple Juice</h1>
-             
-                </div>
-             
-                <div class="already-in-cart">
-                    
-                    <a>
-                        <span class="circle plus"></span>
-                    </a>
-                    
-                    <span>2</span>
-                    
-                    <a>
-                        <span class="circle minus"></span>
-                    </a>
-                </div>
-                <div class="prices">
-                    <div class="amount">₹ 2.99</div>     
-                    <div class="remove"><u>Remove</u></div>
-                </div>
-                
+
+        <ng-container *ngFor="let category of cart">
+            <div class="category">
+                <h4>Category : {{category?.name}}</h4>
             </div>
-            <div class="cart-item">
-                <div class="image-box">
-                    <img src="assets/images/pages/dashboard/1.jpg" class="img-cart-item" />
-                    </div>
-                    <div class="about">
-                    <h1 class="c-title">Apple Juice Apple Juice Apple Juice Apple Juice</h1>
-                 
-                    </div>
-                 
-                    <div class="already-in-cart">
-                        
-                        <a>
-                            <span class="circle plus"></span>
-                        </a>
-                        
-                        <span>2</span>
-                        
-                        <a>
-                            <span class="circle minus"></span>
-                        </a>
-                    </div>
-                    <div class="prices">
-                        <div class="amount">₹ 2.99</div>     
-                        <div class="remove"><u>Remove</u></div>
-                    </div>
-                    
-                </div>
-
-
-                <div class="category">
-                    <h4>Category : Broach</h4>
-                </div>
+            <ng-container *ngFor="let item of category?.items">
                 <div class="cart-item">
                     <div class="image-box">
-                        <img src="assets/images/pages/dashboard/1.jpg" class="img-cart-item" />
+                        <img [src]="item?.imagePath" class="img-cart-item" />
                         </div>
                         <div class="about">
-                        <h1 class="c-title">Apple Juice</h1>
+                        <h1 class="c-title">{{item?.name}}</h1>
                      
                         </div>
                      
                         <div class="already-in-cart">
                             
-                            <a>
+                            <a (click)="incrementQuantity(category,item)">
                                 <span class="circle plus"></span>
                             </a>
                             
-                            <span>2</span>
+                            <span>{{item?.quantity}}</span>
                             
-                            <a>
+                            <a (click)="decrementQuantity(category,item)">
                                 <span class="circle minus"></span>
                             </a>
                         </div>
                         <div class="prices">
-                            <div class="amount">₹ 2.99</div>     
-                            <div class="remove"><u>Remove</u></div>
+                            <div class="amount">₹ {{item?.price}}</div>     
+                            <div class="remove" (click)="removeItem(category,item)"><u>Remove</u></div>
                         </div>
                         
                     </div>
-                    <div class="cart-item">
-                        <div class="image-box">
-                            <img src="assets/images/pages/dashboard/1.jpg" class="img-cart-item" />
-                            </div>
-                            <div class="about">
-                            <h1 class="c-title">Apple Juice Apple Juice Apple Juice Apple Juice</h1>
-                         
-                            </div>
-                         
-                            <div class="already-in-cart">
-                                
-                                <a>
-                                    <span class="circle plus"></span>
-                                </a>
-                                
-                                <span>2</span>
-                                
-                                <a>
-                                    <span class="circle minus"></span>
-                                </a>
-                            </div>
-                            <div class="prices">
-                                <div class="amount">₹ 2.99</div>     
-                                <div class="remove"><u>Remove</u></div>
-                            </div>
-                            
-                        </div>
+            </ng-container>
+        </ng-container>
+        <div  class="noRecords" *ngIf='!cart || cart.length == 0'>No items to show</div>
 
-
+                    <ng-container *ngIf="cart && cart.length > 0">
 
                         <hr> 
                         <div class="checkout-container">
@@ -131,13 +51,15 @@
                                 <div class="total">
                                 <div class="total-text">
                                 <div class="Subtotal">Total</div>
-                                <div class="items">2 items</div>
+                                <div class="items">{{itemCount}} items</div>
                                 </div>
-                                <div class="total-amount">₹ 6.18</div>
+                                <div class="total-amount">₹ {{total}}</div>
                                 </div>
                                 <button class="button" (click)="orderPreview();">Checkout</button>
                             </div>
                         </div>
+                    </ng-container>
+
 
 
     </div>

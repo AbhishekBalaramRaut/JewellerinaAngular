@@ -1,0 +1,24 @@
+<div class="modal-header">
+
+    <h4 class="modal-title"> {{ modalData.modalHeader }} </h4>
+
+    <button *ngIf="!modalData?.hideClose"
+    type="button" class="popup-close close"
+    aria-label="Close" (click)="modalDismiss();">
+         <img src="assets/icons/actions/close.svg" title="Close" width="20" />
+    </button>
+</div>
+
+<div class="modal-body">
+    <p> {{ modalData?.modalText }}</p>
+    <p *ngIf="modalData?.modalNote"> <b> {{ modalData?.modalNote }}</b></p>
+
+    <div class="actions">
+        <ng-container *ngFor="let action of modalData.actions">
+            <button type="button"
+            class="btn btn-primary" (click)="modalClosed(action)">
+            {{action}}
+        </button>
+        </ng-container>
+    </div>
+</div>

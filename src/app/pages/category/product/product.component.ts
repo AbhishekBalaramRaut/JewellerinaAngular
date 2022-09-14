@@ -1,39 +1,47 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CategoryService } from 'src/app/shared/services/pages/category.service';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss']
+  styleUrls: ['./product.component.scss'],
 })
 export class ProductComponent implements OnInit {
+  item: any = null;
+  itemId: any = null;
+  categoryId: any = null;
+  categoryCode: any = null;
 
-    products: any[]= [];
-	images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
-	responsiveOptions;
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private categoryService: CategoryService
+  ) {}
 
-	constructor() { 
-		this.responsiveOptions = [
-            {
-                breakpoint: '1024px',
-                numVisible: 3,
-                numScroll: 3
-            },
-            {
-                breakpoint: '768px',
-                numVisible: 2,
-                numScroll: 2
-            },
-            {
-                breakpoint: '560px',
-                numVisible: 1,
-                numScroll: 1
-            }
-        ];
-	}
+  ngOnInit() {
+    this.route.queryParams.subscribe((params) => {
+      this.itemId = params['itemId'];
+      this.categoryId = params['categoryId'];
+      this.categoryCode = params['categoryCode'];
 
-	ngOnInit() {
-		// this.productService.getProductsSmall().then((products: any[]) => {
-		// 	this.products = products;
-		// });
-    }
+      this.categoryService.getItemById(this.itemId).subscribe((data) => {
+        this.item = data['result'] ? data['result'] : null;
+        this.item['imagePath'] =
+          'assets/images/jewellery/' +
+          this.categoryCode +
+          '/' +
+          this.item['image'];
+      });
+    });
+  }
+
+  navigateToCategory() {
+    this.router.navigate(['../'], {
+      queryParams: {
+        categoryId: this.categoryId,
+      },
+      relativeTo: this.route,
+    });
+  }
 }
