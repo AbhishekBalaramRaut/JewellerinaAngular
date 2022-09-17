@@ -1,43 +1,56 @@
 <div class="page-content">
-   
-    <div class="page-content-container">
-        <div class="title">
-            <h2>{{category?.name}}</h2>
+  <div class="page-content-container">
+    <div class="title">
+      <h2>{{ category?.name }}</h2>
+    </div>
+    <div class="description">
+      <section class="items">
+        <ng-container *ngFor="let item of category?.items">
+          <div class="item__card">
+            <img
+              [src]="item?.imagePath"
+              class="card_image"
+              (click)="openItem(item?.id)"
+              alt="{{ item?.name }}"
+              style="width: 100%"
+            />
+            <div class="name">
+              <h4>{{ item?.name }}</h4>
+            </div>
+
+            <p class="price">₹ {{ item?.price }}</p>
+
+            <button
+              *ngIf="item?.quantity == 0"
+              class="buy--btn"
+              id="addToCartBtn-{{ item?.id }}"
+              name="addToCartBtn-{{ item?.id }}"
+              (click)="addTocart(item)"
+            >
+              ADD TO CART
+            </button>
+            <div class="already-in-cart" *ngIf="item?.quantity > 0">
+              <a (click)="addTocart(item)">
+                <span class="circle plus"></span>
+              </a>
+
+              <span>{{ item?.quantity }}</span>
+
+              <a (click)="minusFromcart(item)">
+                <span class="circle minus"></span>
+              </a>
+            </div>
+          </div>
+        </ng-container>
+
+        <div
+          class="noRecords"
+          *ngIf="!category || category?.items.length === 0"
+        >
+          No Results
         </div>
-       <div class="description">
-        <section class="items">
-            
-            <ng-container *ngFor="let item of category?.items">
-                <div class="item__card">
-                    <img [src]="item?.imagePath" class="card_image" (click)="openItem(item?.id)" alt="{{item?.name}}" style="width:100%">
-                    <div class="name">
-                        <h4>{{item?.name}}</h4>
-                    </div>
-                    
-                    <p class="price">₹ {{item?.price}}</p>
-                    <!-- <div class="already-in-cart">
-                        
-                        <a>
-                            <span class="circle plus"></span>
-                        </a>
-                        
-                        <span>2</span>
-                        
-                        <a>
-                            <span class="circle minus"></span>
-                        </a>
-                    </div> -->
-                    <button>Add to Cart</button>
-                </div>
-               
-            </ng-container>
 
-            <div  class="noRecords" *ngIf='!category || category?.items.length === 0'>No Results</div>
-
-       
-    
-    
-              <!-- <div class="item__card">
+        <!-- <div class="item__card">
                 <img src="assets/images/pages/dashboard/1.jpg" class="card_image" alt="Denim Jeans" style="width:100%">
                 <h1>Tailored Jeans</h1>
                 <p class="price">₹19.99</p>
@@ -55,11 +68,7 @@
                 </div>
            
               </div> -->
-             
-        </section>
-       </div>
-     
-
+      </section>
     </div>
-
+  </div>
 </div>

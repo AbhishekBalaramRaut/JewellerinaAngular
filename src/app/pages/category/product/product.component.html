@@ -50,16 +50,16 @@
        
                     </ul>
                 </div>
-                <!-- <button class="buy--btn">ADD TO CART</button> -->
-                <div class="already-in-cart">
+                <button *ngIf="quantity == 0" class="buy--btn" (click)="addTocart()">ADD TO CART</button>
+                <div class="already-in-cart" *ngIf="quantity > 0">
                     
-                  <a>
+                  <a (click)="addTocart();">
                       <span class="circle plus"></span>
                   </a>
                   
-                  <span>2</span>
+                  <span>{{quantity}}</span>
                   
-                  <a>
+                  <a (click)="minusFromcart();">
                       <span class="circle minus"></span>
                   </a>
               </div>

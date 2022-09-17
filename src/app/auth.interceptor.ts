@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { LoginService } from './shared/services/pages/login.service';
 import { ModalWindowComponent } from './shared/utils/modal-window/modal-window.component';
 
 @Injectable({
@@ -18,7 +19,7 @@ import { ModalWindowComponent } from './shared/utils/modal-window/modal-window.c
 })
 export class AuthInterceptor implements HttpInterceptor {
   urlsNotToUse: string[] = [];
-
+  alreadyExpired = false;
   modalOptions: NgbModalOptions = {
     centered: true,
     windowClass: 'modalWindow',
@@ -27,7 +28,11 @@ export class AuthInterceptor implements HttpInterceptor {
     ariaLabelledBy: 'modal-basic-title',
   };
 
-  constructor(private modalService: NgbModal, private router: Router) {
+  constructor(
+    private modalService: NgbModal,
+    private router: Router,
+    private loginService: LoginService
+  ) {
     this.urlsNotToUse = ['signIn', 'signUp'];
   }
 
@@ -35,6 +40,8 @@ export class AuthInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
+    this.alreadyExpired = false;
+
     if (this.isNotTokenBased(request.url)) {
       return next.handle(request);
     } else {
@@ -48,30 +55,38 @@ export class AuthInterceptor implements HttpInterceptor {
         catchError((error: HttpErrorResponse) => {
           let errorMsg = '';
           if (error.status == 401) {
-            sessionStorage.removeItem('accessToken');
-            const modalRef = this.modalService.open(
-              ModalWindowComponent,
-              this.modalOptions
-            );
+            if (!this.alreadyExpired) {
+              this.alreadyExpired = true;
+              sessionStorage.removeItem('accessToken');
+              const modalRef = this.modalService.open(
+                ModalWindowComponent,
+                this.modalOptions
+              );
 
-            modalRef.componentInstance.modalData = {
-              modalHeader: 'Session Invalid',
-              modalText: 'Your session has expired. You need to relogin.',
-              actions: ['Ok'],
-            };
+              modalRef.componentInstance.modalData = {
+                modalHeader: 'Session Invalid',
+                modalText: 'Your session has expired. You need to relogin.',
+                actions: ['Ok'],
+                hideClose: true,
+              };
 
-            modalRef.result
-              .then(
-                (data) => {
-                  this.router.navigate(['/']);
-                },
-                () => {
-                  this.router.navigate(['/']);
-                }
-              )
-              .catch((error) => {
-                console.log('error', error);
-              });
+              modalRef.result
+                .then(
+                  (data) => {
+                    this.alreadyExpired = false;
+                    this.loginService.logout();
+                    this.router.navigate(['/']);
+                  },
+                  () => {
+                    this.alreadyExpired = false;
+                    this.loginService.logout();
+                    this.router.navigate(['/']);
+                  }
+                )
+                .catch((error) => {
+                  console.log('error', error);
+                });
+            }
           }
           return throwError(errorMsg);
         }),

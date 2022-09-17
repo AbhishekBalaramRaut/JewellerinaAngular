@@ -8,6 +8,8 @@ import { Properties } from '../../utils/properties';
 })
 export class OrderService {
   orderHistoryUrl = Properties.domain + '/order';
+  placeOrderUrl = Properties.domain + '/order';
+  cancelOrderUrl = Properties.domain + '/order';
   cart: any[] = [];
   cartUpdated = new Subject();
 
@@ -17,8 +19,28 @@ export class OrderService {
     return this.http.get<any>(this.orderHistoryUrl);
   }
 
-  resetCart(cartObject: any) {
+  resetCart(cartObject: any[]) {
     this.cart = cartObject;
     this.cartUpdated.next(this.cart);
+    sessionStorage.setItem('cart', JSON.stringify(cartObject));
+  }
+
+  getCart() {
+    if (this.cart && this.cart.length > 0) {
+      return this.cart;
+    }
+    let cart = sessionStorage.getItem('cart');
+    if (cart && cart.length > 0) {
+      return JSON.parse(cart);
+    }
+    return [];
+  }
+
+  placeOrder(order: any) {
+    return this.http.post<any>(this.placeOrderUrl, order);
+  }
+
+  cancelOrder(id: any) {
+    return this.http.delete<any>(this.cancelOrderUrl + '/' + id);
   }
 }

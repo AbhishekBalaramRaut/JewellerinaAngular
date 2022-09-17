@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/shared/services/pages/login.service';
 import { OrderService } from 'src/app/shared/services/pages/order.service';
 
 @Component({
@@ -10,10 +11,24 @@ import { OrderService } from 'src/app/shared/services/pages/order.service';
 export class PortalHeaderComponent implements OnInit {
   cart: any[] = [];
   count: any = 0;
-
-  constructor(private router: Router, private orderService: OrderService) {}
+  profile: any = null;
+  constructor(
+    private router: Router,
+    private loginService: LoginService,
+    private orderService: OrderService
+  ) {}
 
   ngOnInit(): void {
+    let prof = this.loginService.getProfileNoCall();
+    if (!prof) {
+      this.loginService.getProfile().subscribe((profile) => {
+        this.profile = profile['result'];
+        this.loginService.setProfile(this.profile);
+      });
+    } else {
+      this.profile = prof;
+    }
+
     this.orderService.cartUpdated.subscribe((cart: any) => {
       this.count = 0;
       this.cart = cart;
@@ -24,6 +39,8 @@ export class PortalHeaderComponent implements OnInit {
         });
       });
     });
+    let cart = this.orderService.getCart();
+    if (cart && cart.length > 0) this.orderService.resetCart(cart);
   }
 
   showCart() {
@@ -31,6 +48,7 @@ export class PortalHeaderComponent implements OnInit {
   }
 
   logout() {
-    alert('redirect to login');
+    this.loginService.logout();
+    this.router.navigate(['/']);
   }
 }

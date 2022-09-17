@@ -19,63 +19,18 @@ export class CartComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.cart = [
-      {
-        id: 1,
-        name: 'Baby Shower',
-        description: 'Get variety of jwelleries for Baby Shower',
-        image: 'category.jpg',
-        categoryCode: 'baby',
+    this.orderService.cartUpdated.subscribe((cart: any) => {
+      this.itemCount = 0;
+      this.cart = cart;
 
-        items: [
-          {
-            id: 1,
-            name: 'Baby Shower Flower Dark Red',
-            description: 'Jewellies for the ocassion of Baby Shower',
-            image: 'baby-1.jpg',
-            price: 200.0,
-            categoryId: 1,
-            quantity: 3,
-          },
-          {
-            id: 2,
-            name: 'Baby Shower Flower Light Red',
-            description: 'Jewellies for the ocassion of Baby Shower',
-            image: 'baby-2.jpg',
-            price: 200.0,
-            categoryId: 1,
-            quantity: 2,
-          },
-        ],
-      },
-      {
-        id: 2,
-        name: 'Engagement Ceremony',
-        description: 'Get variety of jwelleries for Engagement Ceremony',
-        image: 'category.jpg',
-        categoryCode: 'engagement',
-        items: [
-          {
-            id: 7,
-            name: 'Engagement Mirror Tray',
-            description: 'Jewellies for the Engagement Ceremony',
-            image: 'engage-1.jpg',
-            price: 750.0,
-            categoryId: 2,
-            quantity: 1,
-          },
-          {
-            id: 8,
-            name: 'Engagement Suite and bride Tray',
-            description: 'Jewelleries for the Engagement Ceremony',
-            image: 'engage-2.jpg',
-            price: 850.0,
-            categoryId: 2,
-            quantity: 4,
-          },
-        ],
-      },
-    ];
+      this.cart.forEach((category) => {
+        category['items'].forEach((item: any, index: any) => {
+          this.itemCount = this.itemCount + 1;
+        });
+      });
+    });
+    let cart = this.orderService.getCart();
+    if (cart && cart.length > 0) this.orderService.resetCart(cart);
 
     this.cart.forEach((category) => {
       category['items'].forEach((item: any) => {
