@@ -7,6 +7,7 @@ import { Properties } from '../../utils/properties';
 })
 export class LoginService {
   signInUrl = Properties.domain + '/signIn';
+  signUpUrl = Properties.domain + '/signUp';
   profileUrl = Properties.domain + '/profile';
   updateCustomerUrl = Properties.domain + '/updateCustomer';
   profile: any;
@@ -15,6 +16,10 @@ export class LoginService {
 
   signIn(crdentials: any) {
     return this.http.post<any>(this.signInUrl, crdentials);
+  }
+
+  signUp(crdentials: any) {
+    return this.http.post<any>(this.signUpUrl, crdentials);
   }
 
   getProfile() {

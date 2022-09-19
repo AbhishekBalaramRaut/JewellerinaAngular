@@ -134,109 +134,214 @@
             </ng-container>
 
             <ng-container *ngIf="signUp">
-              <div class="card-body p-5">
-                <h2 class="text-uppercase text-center mb-5">
-                  Create an account
-                </h2>
+              <form #signUpForm="ngForm">
+                <div class="card-body p-5">
+                  <h2 class="text-uppercase text-center mb-5">
+                    Create an account
+                  </h2>
 
-                <form>
-                  <div class="form-group">
-                    <label for="fullname">Your Name</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="fullname"
-                      aria-describedby="nameHelp"
-                      placeholder="Enter your name"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="mobile">Your Mobile</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="mobile"
-                      aria-describedby="mobileHelp"
-                      placeholder="Enter Mobile Number"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="username">Preferred User Name</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="username"
-                      aria-describedby="usernameHelp"
-                      placeholder="Enter User Name"
-                    />
-                  </div>
-                  <div class="form-group">
-                    <label for="userEmail">Email</label>
-                    <input
-                      type="email"
-                      class="form-control"
-                      id="userEmail"
-                      aria-describedby="userEmailHelp"
-                      placeholder="Enter email"
-                    />
-                  </div>
+                  <form>
+                    <div class="form-group">
+                      <label for="fullname">Your Name</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="fullname"
+                        name="fullname"
+                        [(ngModel)]="credentials.name"
+                        #fullname="ngModel"
+                        maxlength="25"
+                        required
+                        aria-describedby="nameHelp"
+                        placeholder="Enter your name"
+                      />
 
-                  <div class="form-group">
-                    <label for="password">Password</label>
-                    <input
-                      type="password"
-                      class="form-control"
-                      id="password"
-                      placeholder="Password"
-                    />
-                  </div>
-
-                  <div class="form-group">
-                    <label for="repeatPassword">Repeat Password</label>
-                    <input
-                      type="password"
-                      class="form-control"
-                      id="repeatPassword"
-                      placeholder="Repeat Password"
-                    />
-                  </div>
-
-                  <div
-                    class="form-check d-flex justify-content-center mb-5 terms-container"
-                  >
-                    <input
-                      class="form-check-input me-2"
-                      type="checkbox"
-                      value=""
-                      id="termsAndConditions"
-                    />
-                    <label
-                      class="form-check-label"
-                      for="termsAndConditions"
-                      class="termsAndConditions"
-                    >
-                      I agree all statements in
-                      <a href="javascript:void(0);" class="text-body"
-                        ><u>Terms of service</u></a
+                      <div
+                        *ngIf="fullname.invalid && fullname.touched"
+                        class="alert alert-danger"
                       >
-                    </label>
-                  </div>
+                        <div *ngIf="fullname.errors?.['required']">
+                          Name is required
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="mobile">Your Mobile</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="mobile"
+                        name="mobile"
+                        [(ngModel)]="credentials.mobile"
+                        #mobile="ngModel"
+                        maxlength="10"
+                        pattern="^[0-9]{10}$"
+                        required
+                        aria-describedby="mobileHelp"
+                        placeholder="Enter Mobile Number"
+                        (keydown.space)="$event.preventDefault()"
+                      />
+                      <div
+                        *ngIf="mobile.invalid && mobile.touched"
+                        class="alert alert-danger"
+                      >
+                        <div *ngIf="mobile.errors?.['required']">
+                          Mobile is required
+                        </div>
+                        <div *ngIf="mobile.errors?.['pattern']">
+                          Mobile number must contain 10 digits
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="username">Preferred User Name</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="username"
+                        name="username"
+                        [(ngModel)]="credentials.username"
+                        #username="ngModel"
+                        maxlength="15"
+                        required
+                        aria-describedby="usernameHelp"
+                        placeholder="Enter User Name"
+                        (keydown.space)="$event.preventDefault()"
+                      />
+                      <div
+                        *ngIf="username.invalid && username.touched"
+                        class="alert alert-danger"
+                      >
+                        <div *ngIf="username.errors?.['required']">
+                          User Name is required
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="userEmail">Email</label>
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="userEmail"
+                        aria-describedby="userEmailHelp"
+                        placeholder="Enter email"
+                        name="userEmail"
+                        [(ngModel)]="credentials.email"
+                        maxlength="23"
+                        required
+                        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                        #userEmail="ngModel"
+                        (keydown.space)="$event.preventDefault()"
+                      />
+                      <div
+                        *ngIf="userEmail.invalid && userEmail.touched"
+                        class="alert alert-danger"
+                      >
+                        <div *ngIf="userEmail.errors?.['required']">
+                          Email is required
+                        </div>
+                        <div *ngIf="userEmail.errors?.['pattern']">
+                          Email is incorrect
+                        </div>
+                      </div>
+                    </div>
 
-                  <div class="d-flex justify-content-center">
-                    <button type="button" class="register">Register</button>
-                  </div>
+                    <div class="form-group">
+                      <label for="password">Password</label>
+                      <input
+                        type="password"
+                        name="password"
+                        class="form-control"
+                        [(ngModel)]="credentials.password"
+                        maxlength="15"
+                        required
+                        id="password"
+                        placeholder="Password"
+                        #password1="ngModel"
+                        (keydown.space)="$event.preventDefault()"
+                      />
+                      <div
+                        *ngIf="password1.invalid && password1.touched"
+                        class="alert alert-danger"
+                      >
+                        <div *ngIf="password1.errors?.['required']">
+                          Password is required
+                        </div>
+                      </div>
+                    </div>
 
-                  <p class="text-center text-muted mt-5 mb-0 already-acc">
-                    Have already an account?
-                    <a
-                      href="javascript:void(0);"
-                      (click)="signUp = !signUp"
-                      class="fw-bold text-body block-display"
-                      ><u>Login here</u></a
+                    <div class="form-group">
+                      <label for="repeatPassword">Repeat Password</label>
+                      <input
+                        type="password"
+                        name="repeatpassword"
+                        class="form-control"
+                        [(ngModel)]="credentials.repeatpassword"
+                        maxlength="15"
+                        required
+                        id="repeatpassword"
+                        placeholder="Repeat Password"
+                        #password2="ngModel"
+                        (keydown.space)="$event.preventDefault()"
+                      />
+                      <div
+                        *ngIf="password2.invalid && password2.touched"
+                        class="alert alert-danger"
+                      >
+                        <div *ngIf="password2.errors?.['required']">
+                          Repeat Password is required
+                        </div>
+                      </div>
+                    </div>
+                    <div *ngIf="errorMsg" class="alert alert-danger">
+                      {{ errorMsg }}
+                    </div>
+                    <div
+                      class="form-check d-flex justify-content-center mb-5 terms-container"
                     >
-                  </p>
-                </form>
-              </div>
+                      <input
+                        class="form-check-input me-2"
+                        type="checkbox"
+                        id="termsAndConditions"
+                        name="termsAndConditions"
+                        required
+                        [(ngModel)]="termsCheckbox"
+                      />
+                      <label
+                        class="form-check-label"
+                        for="termsAndConditions"
+                        class="termsAndConditions"
+                      >
+                        I agree all statements in
+                        <a href="javascript:void(0);" class="text-body"
+                          ><u>Terms of service</u></a
+                        >
+                      </label>
+                    </div>
+
+                    <div class="d-flex justify-content-center">
+                      <button
+                        type="button"
+                        class="register"
+                        [disabled]="!signUpForm.form.valid || submitted"
+                        (click)="signUpSubmit()"
+                      >
+                        Register
+                      </button>
+                    </div>
+
+                    <p class="text-center text-muted mt-5 mb-0 already-acc">
+                      Have already an account?
+                      <a
+                        href="javascript:void(0);"
+                        (click)="signUp = !signUp"
+                        class="fw-bold text-body block-display"
+                        ><u>Login here</u></a
+                      >
+                    </p>
+                  </form>
+                </div>
+              </form>
             </ng-container>
           </div>
         </div>

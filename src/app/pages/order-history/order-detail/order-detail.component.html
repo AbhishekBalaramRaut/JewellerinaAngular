@@ -1,0 +1,46 @@
+<div class="page-content">
+  <div class="page-content-container">
+    <div class="title">
+      <h2>Order Detail - # 12</h2>
+    </div>
+    <div class="description">
+      <ng-container *ngFor="let category of cart">
+        <div class="category">
+          <h4>Category : Haldi Jewellery</h4>
+        </div>
+        <ng-container *ngFor="let item of category?.items">
+          <div class="cart-item">
+            <div class="image-box">
+              <img [src]="item?.imagePath" class="img-cart-item" />
+            </div>
+            <div class="about">
+              <h1 class="c-title">{{ item?.name }}</h1>
+            </div>
+
+            <div class="already-in-cart">
+              <span>{{ item?.quantity }}</span>
+            </div>
+            <div class="prices">
+              <div class="amount">₹ {{ item?.price }}</div>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+
+      <ng-container *ngIf="cart && cart.length > 0">
+        <hr />
+        <div class="checkout-container">
+          <div class="checkout">
+            <div class="total">
+              <div class="total-text">
+                <div class="Subtotal">Total</div>
+                <div class="items">{{ itemCount }} items</div>
+              </div>
+              <div class="total-amount">₹ {{ total }}</div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

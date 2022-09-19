@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import * as moment from 'moment';
 import { OrderService } from 'src/app/shared/services/pages/order.service';
@@ -31,7 +31,8 @@ export class OrderHistoryComponent implements OnInit {
   constructor(
     private orderService: OrderService,
     private modalService: NgbModal,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -164,5 +165,14 @@ export class OrderHistoryComponent implements OnInit {
       .catch((error: any) => {
         console.log('error', error);
       });
+  }
+
+  orderDetails(id: any) {
+    this.router.navigate(['detail'], {
+      queryParams: {
+        orderId: id,
+      },
+      relativeTo: this.route,
+    });
   }
 }

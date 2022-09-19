@@ -5,6 +5,7 @@ import { CheckoutComponent } from './cart/checkout/checkout.component';
 import { CategoryComponent } from './category/category.component';
 import { ProductComponent } from './category/product/product.component';
 import { HomeComponent } from './home/home.component';
+import { OrderDetailComponent } from './order-history/order-detail/order-detail.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PagesComponent } from './pages.component';
@@ -18,11 +19,11 @@ const routes: Routes = [
       {
         path: '',
         redirectTo: 'home',
-        pathMatch: 'full'
+        pathMatch: 'full',
       },
       {
         path: 'home',
-        component: HomeComponent, 
+        component: HomeComponent,
         data: {
           label: 'Home',
           breadcrumb: {
@@ -30,9 +31,9 @@ const routes: Routes = [
             level: 1,
             disabled: true,
             label: 'Home',
-            styleClass: 'home'
-          }
-        }
+            styleClass: 'home',
+          },
+        },
       },
       {
         path: 'home/category',
@@ -43,9 +44,9 @@ const routes: Routes = [
             routerLink: '/portal/home/category',
             level: 2,
             disabled: true,
-            label: 'Category'
-          }
-        }
+            label: 'Category',
+          },
+        },
       },
       {
         path: 'home/category/product',
@@ -56,9 +57,9 @@ const routes: Routes = [
             routerLink: '/portal/home/product',
             level: 3,
             disabled: true,
-            label: 'Product'
-          }
-        }
+            label: 'Product',
+          },
+        },
       },
       {
         path: 'order-history',
@@ -69,9 +70,22 @@ const routes: Routes = [
             routerLink: '/portal/order-history',
             level: 1,
             disabled: true,
-            label: 'Order History'
-          }
-        }
+            label: 'Order History',
+          },
+        },
+      },
+      {
+        path: 'order-history/detail',
+        component: OrderDetailComponent,
+        data: {
+          label: 'Order Details',
+          breadcrumb: {
+            routerLink: '/portal/order-history/detail',
+            level: 2,
+            disabled: true,
+            label: 'Order Details',
+          },
+        },
       },
       {
         path: 'profile',
@@ -82,9 +96,9 @@ const routes: Routes = [
             routerLink: '/portal/profile',
             level: 1,
             disabled: true,
-            label: 'Profile'
-          }
-        }
+            label: 'Profile',
+          },
+        },
       },
       {
         path: 'cart',
@@ -95,9 +109,9 @@ const routes: Routes = [
             routerLink: '/portal/cart',
             level: 1,
             disabled: true,
-            label: 'Cart'
-          }
-        }
+            label: 'Cart',
+          },
+        },
       },
       {
         path: 'cart/checkout',
@@ -108,25 +122,24 @@ const routes: Routes = [
             routerLink: '/portal/cart/checkout',
             level: 2,
             disabled: true,
-            label: 'Order Preview'
-          }
-        }
+            label: 'Order Preview',
+          },
+        },
       },
       {
         path: '**',
-        component: PageNotFoundComponent
-      }
-
-    ]
+        component: PageNotFoundComponent,
+      },
+    ],
   },
   {
-    path:'../../',
-    redirectTo: '/'               
-  }
+    path: '../../',
+    redirectTo: '/',
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class PagesRoutingModule { }
+export class PagesRoutingModule {}

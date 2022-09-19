@@ -42,6 +42,30 @@ export class SigninComponent implements OnInit {
     });
   }
 
+  signUpSubmit() {
+    this.errorMsg = '';
+    this.submitted = true;
+    setTimeout(() => {
+      this.submitted = false;
+    }, 2000);
+
+    if (this.credentials['password'] != this.credentials['repeatpassword']) {
+      this.errorMsg = 'Password and repeat password must be same';
+      return;
+    }
+
+    this.loginService.signUp(this.credentials).subscribe((data: any) => {
+      console.log(data);
+
+      if (Properties.succesCode == data['code']) {
+        sessionStorage.setItem('accessToken', data['result']['token']);
+        this.router.navigate(['portal/home']);
+      } else {
+        this.handleErrorMsg(data['message']);
+      }
+    });
+  }
+
   handleErrorMsg(message: any) {
     this.errorMsg = message;
     setTimeout(() => {

@@ -8,6 +8,7 @@ import { Properties } from '../../utils/properties';
 })
 export class OrderService {
   orderHistoryUrl = Properties.domain + '/order';
+  orderDetailUrl = Properties.domain + '/order';
   placeOrderUrl = Properties.domain + '/order';
   cancelOrderUrl = Properties.domain + '/order';
   cart: any[] = [];
@@ -17,6 +18,10 @@ export class OrderService {
 
   getOrders() {
     return this.http.get<any>(this.orderHistoryUrl);
+  }
+
+  getOrder(id: any) {
+    return this.http.get<any>(this.orderDetailUrl + '/' + id);
   }
 
   resetCart(cartObject: any[]) {
