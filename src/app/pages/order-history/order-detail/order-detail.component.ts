@@ -5,6 +5,7 @@ import {
   NgbModal,
   NgbModalOptions,
 } from '@ng-bootstrap/ng-bootstrap';
+import * as moment from 'moment';
 import { CategoryService } from 'src/app/shared/services/pages/category.service';
 import { OrderService } from 'src/app/shared/services/pages/order.service';
 import { ModalWindowComponent } from 'src/app/shared/utils/modal-window/modal-window.component';
@@ -20,6 +21,13 @@ export class OrderDetailComponent implements OnInit {
   total: any = 0;
   orderDetail: any = null;
   categories: any[] = [];
+
+  statuses: any[] = [
+    { status: 1, description: 'Yet to be delivered', state: 'Order Placed' },
+    { status: 2, description: 'In Progress', state: 'In Progress' },
+    { status: 3, description: 'Completed', state: 'Completed' },
+    { status: 4, description: 'Cancelled', state: 'Cancelled' },
+  ];
 
   modalOptions: NgbModalOptions = {
     backdrop: 'static',
@@ -83,10 +91,17 @@ export class OrderDetailComponent implements OnInit {
   }
 
   orderId = '';
+  status: any;
 
   prepareCart() {
     this.orderService.getOrder(this.orderId).subscribe((data) => {
       this.orderDetail = data['result'] ? data['result'] : null;
+      this.orderDetail.orderDate = moment(this.orderDetail['orderDate']).format(
+        'DD-MMM-yyyy'
+      );
+      this.status = this.statuses.find(
+        (st) => st['status'] == this.orderDetail['status']
+      );
       this.cart = [];
       this.orderDetail['items'].forEach((item: any) => {
         let category = this.categories.find(
@@ -108,17 +123,25 @@ export class OrderDetailComponent implements OnInit {
             cat['items'].forEach((itemC: any) => {
               if (itemC['id'] == item['item']['id']) {
                 itemC['found'] = true;
-                itemC['quantity'] = item['quantity'];
+                itemC['quantity'] = +item['quantity'];
               }
             });
           }
         });
 
         this.cart.forEach((cat: any) => {
-          cat['items'] = cat['items'].filter((item: any) => item['found']);
+          if (item['item']['categoryId'] == cat['id']) {
+            cat['items'] = cat['items'].filter((item: any) => item['found']);
+          }
         });
 
         console.log(this.cart);
+      });
+      this.cart.forEach((category) => {
+        category['items'].forEach((item: any) => {
+          this.total = this.total + item['price'] * item['quantity'];
+          this.itemCount = this.itemCount + 1;
+        });
       });
     });
   }

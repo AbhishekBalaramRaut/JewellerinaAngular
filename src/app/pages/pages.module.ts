@@ -15,6 +15,7 @@ import { CheckoutComponent } from './cart/checkout/checkout.component';
 import { CategoryComponent } from './category/category.component';
 import { ProductComponent } from './category/product/product.component';
 import { HomeComponent } from './home/home.component';
+import { OrderDetailComponent } from './order-history/order-detail/order-detail.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PagesRoutingModule } from './pages-routing.module';
@@ -27,6 +28,7 @@ import { ProfileComponent } from './profile/profile.component';
     CategoryComponent,
     ProductComponent,
     CheckoutComponent,
+    OrderDetailComponent,
     PortalLayoutComponent,
     PortalHeaderComponent,
     PortalSidebarComponent,
@@ -37,14 +39,14 @@ import { ProfileComponent } from './profile/profile.component';
     ProfileComponent,
     OrderHistoryComponent,
     CategoryComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
   ],
   imports: [
     CommonModule,
     BreadcrumbModule,
     FormsModule,
     PagesRoutingModule,
-    NgbModule
-  ]
+    NgbModule,
+  ],
 })
-export class PagesModule { }
+export class PagesModule {}

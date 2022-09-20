@@ -1,12 +1,29 @@
 <div class="page-content">
   <div class="page-content-container">
     <div class="title">
-      <h2>Order Detail - # 12</h2>
+      <h4>Order - # {{ orderDetail?.id }}</h4>
     </div>
     <div class="description">
+      <div class="top-header">
+        <div class="key-val">
+          <span class="key">Order Date:&nbsp;</span>
+          <span class="val">{{ orderDetail?.orderDate }}</span>
+        </div>
+        <div class="key-val">
+          <span class="key">Status:&nbsp;</span>
+          <span class="val">{{ status?.state }}</span>
+        </div>
+        <div class="key-val">
+          <span class="key">Payment:&nbsp;</span>
+          <span class="val">{{
+            orderDetail?.payment ? "Paid" : "Unpaid"
+          }}</span>
+        </div>
+      </div>
+
       <ng-container *ngFor="let category of cart">
         <div class="category">
-          <h4>Category : Haldi Jewellery</h4>
+          <h4>Category : {{ category?.name }}</h4>
         </div>
         <ng-container *ngFor="let item of category?.items">
           <div class="cart-item">

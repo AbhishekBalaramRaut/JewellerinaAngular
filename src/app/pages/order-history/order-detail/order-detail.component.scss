@@ -34,7 +34,8 @@
     font-weight: 600;
     color: #fff;
 
-    h2 {
+    h4 {
+      font-size: 18px;
       font-weight: bold;
     }
   }
@@ -53,10 +54,10 @@
     margin-bottom: 3rem;
 
     .title {
-      padding: 3rem;
+      padding: 2rem;
 
       h2 {
-        font-size: 2.5rem;
+        font-size: 2rem;
         letter-spacing: 2px;
       }
     }
@@ -123,7 +124,6 @@
   text-align: right;
 }
 .amount {
-  padding-top: 20px;
   font-size: 18px;
 }
 .save {
@@ -305,8 +305,8 @@ hr {
     font-weight: bold;
   }
 
-  .page-content-container .title h2 {
-    font-size: 3.5rem;
+  .page-content-container .title h4 {
+    font-size: 3rem;
   }
 
   .category {
@@ -364,6 +364,20 @@ hr {
   width: 100%;
 }
 
+.top-header {
+  margin-bottom: 2rem;
+}
+.key-val {
+  display: block;
+  font-size: 14px;
+  margin: 0rem 3rem;
+
+  span.key {
+    font-weight: bold;
+    display: inline-block;
+  }
+}
+
 @media only screen and (max-width: 1350px) {
   .noRecords {
     font-size: 22px;
@@ -382,6 +396,20 @@ hr {
 
   .noRecords {
     font-size: 22px;
+  }
+
+  .top-header {
+    margin-bottom: 2rem;
+  }
+  .key-val {
+    display: block;
+    font-size: 20px;
+    margin: 0rem 3rem;
+
+    span.key {
+      font-weight: bold;
+      display: inline-block;
+    }
   }
 
   .order-post-instruction {
