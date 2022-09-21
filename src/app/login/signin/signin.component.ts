@@ -28,7 +28,7 @@ export class SigninComponent implements OnInit {
     this.submitted = true;
     setTimeout(() => {
       this.submitted = false;
-    }, 1200);
+    }, 2000);
 
     this.loginService.signIn(this.credentials).subscribe((data: any) => {
       console.log(data);
