@@ -163,6 +163,30 @@ button.singInPage {
   }
 }
 
+span.verified {
+  font-size: 14px;
+  color: green;
+  font-weight: bold;
+  position: absolute;
+  right: 9rem;
+  margin-top: -2.8rem;
+}
+
+button.verify-email {
+  width: 10rem;
+  font-size: 14px;
+  padding: 4px;
+  background: #c19506;
+  position: absolute;
+  right: 3rem;
+  margin-top: -2.8rem;
+
+  &:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+  }
+}
+
 @media only screen and (max-width: 1080) {
   .welcome-page {
     position: relative;

@@ -295,9 +295,15 @@
     }
   }
 
+  .side-nav {
+    margin-top: 10rem;
+  }
+
   .navigation .navigation_button {
     height: 10rem;
     width: 10rem;
+    position: fixed;
+    z-index: 1112;
 
     .navigation-icon {
       width: 5rem !important;

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import * as moment from 'moment';
+import { LoginService } from 'src/app/shared/services/pages/login.service';
 import { OrderService } from 'src/app/shared/services/pages/order.service';
 import { ModalWindowComponent } from 'src/app/shared/utils/modal-window/modal-window.component';
 import { Properties } from 'src/app/shared/utils/properties';
@@ -32,7 +33,8 @@ export class OrderHistoryComponent implements OnInit {
     private orderService: OrderService,
     private modalService: NgbModal,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private loginService: LoginService
   ) {}
 
   ngOnInit(): void {
@@ -109,9 +111,26 @@ export class OrderHistoryComponent implements OnInit {
       });
   }
 
+  profile: any = {};
+
   cancelOrder(id?: any) {
     this.orderService.cancelOrder(id).subscribe((res: any) => {
       if (res['code'] == Properties.succesCode) {
+        this.profile = this.loginService.getProfileNoCall();
+        let email = this.profile['email'] + ',thakarerina13@gmail.com';
+
+        this.orderService
+          .sendEmail({
+            to: email,
+            subject: 'Order Cancelled',
+            message:
+              'Dear ' +
+              this.profile['name'] +
+              ', \n\n Greetings from Jwellerina! \n\n Order #' +
+              id +
+              ' is cancelled. \n\n We know things were not as planned. Please provide us one more opportunity to fullfill your needs !!! \n\n Regards, \n Dhuna from Jwellerina Team',
+          })
+          .subscribe((data) => {});
         this.cancelSuccess(id);
         this.orders = [];
         this.getOrders();

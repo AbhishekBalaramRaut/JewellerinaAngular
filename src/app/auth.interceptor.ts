@@ -33,7 +33,7 @@ export class AuthInterceptor implements HttpInterceptor {
     private router: Router,
     private loginService: LoginService
   ) {
-    this.urlsNotToUse = ['signIn', 'signUp'];
+    this.urlsNotToUse = ['signIn', 'signUp', 'sendOtp'];
   }
 
   intercept(
@@ -43,7 +43,13 @@ export class AuthInterceptor implements HttpInterceptor {
     this.alreadyExpired = false;
 
     if (this.isNotTokenBased(request.url)) {
-      return next.handle(request);
+      let req = request.clone({
+        setHeaders: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      return next.handle(req);
     } else {
       let token = sessionStorage.getItem('accessToken');
       let req = request.clone({

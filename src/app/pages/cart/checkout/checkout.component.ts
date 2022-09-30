@@ -5,6 +5,7 @@ import {
   NgbModal,
   NgbModalOptions,
 } from '@ng-bootstrap/ng-bootstrap';
+import { LoginService } from 'src/app/shared/services/pages/login.service';
 import { OrderService } from 'src/app/shared/services/pages/order.service';
 import { ModalWindowComponent } from 'src/app/shared/utils/modal-window/modal-window.component';
 import { Properties } from 'src/app/shared/utils/properties';
@@ -30,7 +31,8 @@ export class CheckoutComponent implements OnInit {
   constructor(
     private modalService: NgbModal,
     private router: Router,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private loginService: LoginService
   ) {}
 
   ngOnInit(): void {
@@ -63,8 +65,11 @@ export class CheckoutComponent implements OnInit {
   }
 
   orderId = '';
+  profile: any = {};
+
   confirmOrder(result: any) {
     this.orderId = result['id'];
+
     this.modalService.open(this.confirmModal, this.modalOptions).result.then(
       (result) => {
         this.router.navigate(['portal/order-history']);
@@ -105,6 +110,22 @@ export class CheckoutComponent implements OnInit {
       if (res['code'] == Properties.succesCode) {
         this.cart = [];
         this.orderService.resetCart(this.cart);
+
+        this.profile = this.loginService.getProfileNoCall();
+        let email = this.profile['email'] + ',thakarerina13@gmail.com';
+
+        this.orderService
+          .sendEmail({
+            to: email,
+            subject: 'Order Placed',
+            message:
+              'Dear ' +
+              this.profile['name'] +
+              ', \n\n Greetings from Jwellerina! \n\n Order #' +
+              this.orderId +
+              ' is successfully placed. \n\n Regards, \n Dhuna from Jwellerina Team',
+          })
+          .subscribe((data) => {});
         this.confirmOrder(res['result']);
       } else {
         this.handleError(res['message']);

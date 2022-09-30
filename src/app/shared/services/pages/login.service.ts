@@ -11,6 +11,7 @@ export class LoginService {
   profileUrl = Properties.domain + '/profile';
   updateCustomerUrl = Properties.domain + '/updateCustomer';
   profile: any;
+  sendOtpUrl = Properties.domain + '/sendOtp';
 
   constructor(private http: HttpClient) {}
 
@@ -51,5 +52,9 @@ export class LoginService {
     sessionStorage.removeItem('profile');
     sessionStorage.removeItem('menuItems');
     sessionStorage.removeItem('accessToken');
+  }
+
+  sendOtp(email: any) {
+    return this.http.post<any>(this.sendOtpUrl, email);
   }
 }

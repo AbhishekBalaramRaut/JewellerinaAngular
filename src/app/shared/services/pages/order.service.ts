@@ -11,6 +11,7 @@ export class OrderService {
   orderDetailUrl = Properties.domain + '/order';
   placeOrderUrl = Properties.domain + '/order';
   cancelOrderUrl = Properties.domain + '/order';
+  emailUrl = Properties.domain + '/sendEmail';
   cart: any[] = [];
   cartUpdated = new Subject();
 
@@ -43,6 +44,10 @@ export class OrderService {
 
   placeOrder(order: any) {
     return this.http.post<any>(this.placeOrderUrl, order);
+  }
+
+  sendEmail(email: any) {
+    return this.http.post<any>(this.emailUrl, email);
   }
 
   cancelOrder(id: any) {

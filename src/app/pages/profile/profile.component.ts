@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { LoginService } from 'src/app/shared/services/pages/login.service';
+import { OrderService } from 'src/app/shared/services/pages/order.service';
 import { ModalWindowComponent } from 'src/app/shared/utils/modal-window/modal-window.component';
 import { Properties } from 'src/app/shared/utils/properties';
 
@@ -32,7 +33,8 @@ export class ProfileComponent implements OnInit {
   constructor(
     private loginService: LoginService,
     private modalService: NgbModal,
-    private router: Router
+    private router: Router,
+    private orderService: OrderService
   ) {}
 
   ngOnInit(): void {
@@ -70,9 +72,28 @@ export class ProfileComponent implements OnInit {
 
     this.loginService.updateCustomer(customer).subscribe((res) => {
       if (res['code'] == Properties.succesCode) {
+        this.profile = this.loginService.getProfileNoCall();
+        let email = this.profile['email'] + ',thakarerina13@gmail.com';
+
         this.forceRelogin();
         this.resetF();
         this.editOn = false;
+
+        this.orderService
+          .sendEmail({
+            to: email,
+            subject: 'Credentials Updated',
+            message:
+              'Dear ' +
+              this.profile['name'] +
+              ', \n\n Greetings from Jwellerina! \n\n Your login #' +
+              ' information has been updated. \n\n Username : ' +
+              this.profile['username'] +
+              ' \n Password: ' +
+              this.profile['password'] +
+              ' \n\n Regards, \n Dhuna from Jwellerina Team',
+          })
+          .subscribe((data) => {});
       } else {
         this.msg = res['message']
           ? res['message']

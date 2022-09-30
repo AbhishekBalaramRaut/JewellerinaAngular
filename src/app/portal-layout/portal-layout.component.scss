@@ -1,71 +1,77 @@
-@import '../../assets/scss/abstracts/variables';
-@import '../../assets/scss/abstracts/mixins';
+@import "../../assets/scss/abstracts/variables";
+@import "../../assets/scss/abstracts/mixins";
 
 .container {
-    max-width: 120rem;
-    margin: 8rem auto;
-    background-color: $color-grey-light-1;
-    box-shadow: $color-tertiary-dark;
+  max-width: 120rem;
+  margin: 8rem auto;
+  background-color: $color-grey-light-1;
+  box-shadow: $color-tertiary-dark;
 
-    min-height: 50rem;
+  min-height: 50rem;
 
-    @media (max-width: 600px) {
-        margin: 0;
-        max-width: 100%;
-        width: 100%;
-    }
+  @media (max-width: 600px) {
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
+  }
 }
-.content{
-    background-color: $color-grey-light-1;
+
+.container-fluid {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 0;
+  z-index: 1111;
 }
 
 .content {
-    display: flex;
+  margin-top: 70px;
+  background-color: $color-grey-light-1;
+}
 
-    @media (max-width: 900px) {
-        flex-direction: column;
+.content {
+  display: flex;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
+
+  app-portal-sidebar {
+    background: $color-grey-dark;
+    width: 0rem;
+    transition: width 0.5s;
+    position: relative;
+
+    &.show-sidebar {
+      width: 27rem;
     }
+  }
 
-    app-portal-sidebar {
-        background: $color-grey-dark;
-        width: 0rem;
-        transition: width 0.5s;
-        position: relative;
-
-        &.show-sidebar {
-            width: 27rem;
-        }
-    }
-   
-   
-    app-portal-content {
-        height: 100%;
-        width: 100%; /* will adjust the width of sidebar */
-        float: left;
-    }
-
+  app-portal-content {
+    height: 100%;
+    width: 100%; /* will adjust the width of sidebar */
+    float: left;
+  }
 }
 
 @media (max-width: 900px) {
-    .content  {
-        app-portal-sidebar { 
-            position: absolute;
-            top: -0.1rem;
-            min-height: 100%;
-            z-index: 1111;
-        }
-    }
-
-    
+  .content {
     app-portal-sidebar {
-        background: $color-grey-dark;
-        width: 40rem !important;
-        transition: width 0.5s;
-        position: relative;
-
-        &.small-screen.show-sidebar {
-            width: 0rem !important;
-        }
+      position: fixed;
+      top: -0.1rem;
+      min-height: 100%;
+      z-index: 1111;
     }
- 
+  }
+
+  app-portal-sidebar {
+    background: $color-grey-dark;
+    width: 40rem !important;
+    transition: width 0.5s;
+    position: relative;
+
+    &.small-screen.show-sidebar {
+      width: 0rem !important;
+    }
+  }
 }
