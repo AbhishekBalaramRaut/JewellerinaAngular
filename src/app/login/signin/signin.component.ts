@@ -121,5 +121,6 @@ export class SigninComponent implements OnInit {
       return;
     }
     this.verified = true;
+    sessionStorage.removeItem('otp');
   }
 }

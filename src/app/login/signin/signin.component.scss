@@ -187,6 +187,12 @@ button.verify-email {
   }
 }
 
+p.otp-sent-msg {
+  margin-bottom: 0px;
+  color: red;
+  font-size: 12px;
+}
+
 @media only screen and (max-width: 1080) {
   .welcome-page {
     position: relative;

@@ -260,6 +260,9 @@
                       class="form-group"
                       *ngIf="!userEmail.invalid && emailSent && !verified"
                     >
+                      <p class="otp-sent-msg">
+                        OTP is sent to above email. Please check your email.
+                      </p>
                       <label for="username">OTP received on Email</label>
                       <input
                         type="text"
