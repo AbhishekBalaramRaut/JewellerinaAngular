@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { SpinnerService } from './shared/services/loader/spinner.service';
 import { LoginService } from './shared/services/pages/login.service';
 import { ModalWindowComponent } from './shared/utils/modal-window/modal-window.component';
 
@@ -31,7 +32,8 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(
     private modalService: NgbModal,
     private router: Router,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private spinnerService: SpinnerService
   ) {
     this.urlsNotToUse = ['signIn', 'signUp', 'sendOtp'];
   }
@@ -48,8 +50,24 @@ export class AuthInterceptor implements HttpInterceptor {
           'Content-Type': 'application/json',
         },
       });
-
-      return next.handle(req);
+      this.spinnerService.requestStarted();
+      return next.handle(req).pipe(
+        tap(
+          (evt) => {
+            if (evt instanceof HttpResponse) {
+              this.spinnerService.requestEnded();
+              if (evt['body']) {
+                if (evt['body']['code'] == 401) {
+                }
+              }
+            }
+          },
+          (error: HttpErrorResponse) => {
+            this.spinnerService.resetSpinner();
+            throw error;
+          }
+        )
+      );
     } else {
       let token = sessionStorage.getItem('accessToken');
       let req = request.clone({
@@ -57,8 +75,10 @@ export class AuthInterceptor implements HttpInterceptor {
           accessToken: '' + token,
         },
       });
+      this.spinnerService.requestStarted();
       return next.handle(req).pipe(
         catchError((error: HttpErrorResponse) => {
+          this.spinnerService.resetSpinner();
           let errorMsg = '';
           if (error.status == 401) {
             if (!this.alreadyExpired) {
@@ -96,14 +116,21 @@ export class AuthInterceptor implements HttpInterceptor {
           }
           return throwError(errorMsg);
         }),
-        tap((evt) => {
-          if (evt instanceof HttpResponse) {
-            if (evt['body']) {
-              if (evt['body']['code'] == 401) {
+        tap(
+          (evt) => {
+            if (evt instanceof HttpResponse) {
+              this.spinnerService.requestEnded();
+              if (evt['body']) {
+                if (evt['body']['code'] == 401) {
+                }
               }
             }
+          },
+          (error: HttpErrorResponse) => {
+            this.spinnerService.resetSpinner();
+            throw error;
           }
-        })
+        )
       );
     }
   }

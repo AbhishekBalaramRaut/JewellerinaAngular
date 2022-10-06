@@ -183,6 +183,13 @@ ul li.home:only-child {
     }
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .modal-body.order-placed {
+    margin-top: 10rem !important;
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .circle {
     width: 35px;
@@ -213,10 +220,10 @@ ul li.home:only-child {
   }
 
   .p-breadcrumb {
-    font-size: 22px;
+    font-size: 20px;
 
     li.p-element {
-      font-size: 22px;
+      font-size: 20px;
     }
   }
 }

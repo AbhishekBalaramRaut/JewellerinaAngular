@@ -110,7 +110,8 @@ export class CheckoutComponent implements OnInit {
       if (res['code'] == Properties.succesCode) {
         this.cart = [];
         this.orderService.resetCart(this.cart);
-
+        this.orderId = res['result']['id'];
+        console.log(res['result']);
         this.profile = this.loginService.getProfileNoCall();
         let email = this.profile['email'] + ',thakarerina13@gmail.com';
 

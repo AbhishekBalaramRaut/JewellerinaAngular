@@ -222,7 +222,7 @@
 
 @media (max-width: 1000px) {
   .side-nav__link span {
-    font-size: 24px;
+    font-size: 20px;
   }
 }
 
@@ -296,27 +296,27 @@
   }
 
   .side-nav {
-    margin-top: 10rem;
+    margin-top: 8rem;
   }
 
   .navigation .navigation_button {
-    height: 10rem;
-    width: 10rem;
+    height: 8rem;
+    width: 8rem;
     position: fixed;
     z-index: 1112;
 
     .navigation-icon {
       width: 5rem !important;
-      top: 1.4rem !important;
+      top: 0.4rem !important;
 
       &::before {
         width: 5rem !important;
-        top: -2rem !important;
+        top: -1.3rem !important;
       }
 
       &::after {
         width: 5rem !important;
-        top: 2rem !important;
+        top: 1.3rem !important;
       }
     }
   }

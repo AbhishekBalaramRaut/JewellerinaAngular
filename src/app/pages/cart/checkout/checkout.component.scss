@@ -306,7 +306,7 @@ hr {
   }
 
   .page-content-container .title h2 {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
   }
 
   .category {
@@ -370,18 +370,24 @@ hr {
   }
 }
 
+@media only screen and (max-width: 1100px) {
+  .modal-content .modal-body {
+    margin-top: 10rem;
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .order-placed .order-placed-btn .order-placed-text {
     display: inline-block;
     text-transform: uppercase;
     color: #fff;
-    font-size: 22px;
-    line-height: 24px;
+    font-size: 20px;
+    line-height: 22px;
     padding: 10px 20px 15px 20px;
   }
 
   .noRecords {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .order-post-instruction {

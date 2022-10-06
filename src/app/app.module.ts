@@ -11,13 +11,15 @@ import { AuthInterceptor } from './auth.interceptor';
 import { LoginComponent } from './login/login.component';
 import { LoginModule } from './login/login.module';
 import { PagesModule } from './pages/pages.module';
+import { SpinnerComponent } from './shared/utils/loader/spinner/spinner.component';
 import { ModalWindowComponent } from './shared/utils/modal-window/modal-window.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    ModalWindowComponent
+    ModalWindowComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,15 +29,15 @@ import { ModalWindowComponent } from './shared/utils/modal-window/modal-window.c
     AppRoutingModule,
     PagesModule,
     LoginModule,
-    NgbModule
+    NgbModule,
   ],
   providers: [
-    {  
-      provide: HTTP_INTERCEPTORS,  
-      useClass: AuthInterceptor,  
-      multi: true  
-    }  
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
