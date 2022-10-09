@@ -173,7 +173,7 @@ span.verified {
 }
 
 button.verify-email {
-  width: 10rem;
+  width: 20rem;
   font-size: 14px;
   padding: 4px;
   background: #c19506;
@@ -204,9 +204,14 @@ p.otp-sent-msg {
     height: 15rem !important;
     margin: 0 auto;
   }
+
+  button.verify-email {
+    width: 20rem !important;
+    margin-top: -4rem !important;
+  }
 }
 
-@media only screen and (max-width: 920px) {
+@media (max-width: 920px) {
   .welcome-page {
     position: relative;
     left: -19%;
@@ -225,6 +230,11 @@ p.otp-sent-msg {
   }
   .logo {
     height: 17rem;
+  }
+
+  button.verify-email {
+    width: 20rem !important;
+    margin-top: -4rem !important;
   }
 }
 

@@ -21,6 +21,7 @@ export class CategoryComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     let categories = this.categoryService.categories;
 
     this.route.queryParams.subscribe((params) => {
